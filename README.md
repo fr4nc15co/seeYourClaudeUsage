@@ -1,4 +1,4 @@
-# Your Claude Usage
+# seeYourClaudeUsage
 
 Panel de análisis de coste para Claude Code. Lee los transcripts de `~/.claude`,
 calcula el equivalente a tarifas de API y sirve un dashboard HTML interactivo.

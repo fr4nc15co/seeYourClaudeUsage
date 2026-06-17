@@ -1,5 +1,5 @@
 {
- "generado": "2026-06-17 22:34:38 CEST",
+ "generado": "2026-06-17 23:47:17 CEST",
  "tz": "CEST",
  "claude_dir": "/Users/fmartin/.claude",
  "solo_lectura": true,
@@ -19,39 +19,39 @@
   "nota": "Los modelos Opus 4.6/4.7/4.8 comparten tarifa (5/25). Fable 5 es el tier superior (10/50). El sufijo [1m] (contexto 1M) NO tiene recargo. <synthetic> = mensajes locales sin coste de API. Suscripciones (USD equiv. a factura anual): Pro $20/mes, Teams Standard $25/mes (€18), Teams Premium 5x $125/mes (€90), Max 5x $100/mes, Max 20x $200/mes. Teams en factura mensual: Standard €21,04 ($29), Premium €105,23 ($146). Conversión orientativa ~1,39 USD/EUR."
  },
  "totales": {
-  "coste": 1320.6337,
-  "coste_input": 5.3157,
-  "coste_output": 147.5428,
-  "coste_cache_read": 674.4514,
-  "coste_cache_write": 493.3239,
+  "coste": 1341.1468,
+  "coste_input": 5.4003,
+  "coste_output": 152.4097,
+  "coste_cache_read": 682.75,
+  "coste_cache_write": 500.5868,
   "coste_web": 0.0,
-  "input": 902830,
-  "output": 5940848,
-  "cache_read": 1272306566,
-  "cache_write": 49629873,
+  "input": 921255,
+  "output": 6226902,
+  "cache_read": 1294944453,
+  "cache_write": 50541718,
   "cache_w5": 7789443,
-  "cache_w1": 41840430,
-  "tokens_total": 1328780117,
+  "cache_w1": 42752275,
+  "tokens_total": 1352634328,
   "web_search": 0,
   "web_fetch": 0,
-  "requests": 6331,
-  "sesiones": 50,
-  "proyectos": 8,
+  "requests": 6530,
+  "sesiones": 54,
+  "proyectos": 9,
   "dias": 17,
-  "transcripts": 179
+  "transcripts": 183
  },
  "by_model": [
   {
    "modelo": "opus-4-8",
    "etiqueta": "Opus 4.8",
    "color": "#f59e0b",
-   "coste": 1032.7632,
-   "requests": 4396.0,
-   "input": 699935.0,
-   "output": 4856078.0,
-   "cache_read": 1073758857.0,
-   "cache_write": 38330771.0,
-   "share": 78.2
+   "coste": 1047.5367,
+   "requests": 4465.0,
+   "input": 715330.0,
+   "output": 4941895.0,
+   "cache_read": 1087736936.0,
+   "cache_write": 38886979.0,
+   "share": 78.1
   },
   {
    "modelo": "fable-5",
@@ -63,30 +63,30 @@
    "output": 389843.0,
    "cache_read": 124661494.0,
    "cache_write": 6552039.0,
-   "share": 19.3
+   "share": 19.0
   },
   {
    "modelo": "sonnet-4-6",
    "etiqueta": "Sonnet 4.6",
    "color": "#3b82f6",
-   "coste": 18.8114,
-   "requests": 329.0,
-   "input": 7258.0,
-   "output": 291669.0,
-   "cache_read": 25579605.0,
-   "cache_write": 1152865.0,
-   "share": 1.4
+   "coste": 23.5485,
+   "requests": 370.0,
+   "input": 9572.0,
+   "output": 463697.0,
+   "cache_read": 27797222.0,
+   "cache_write": 1400268.0,
+   "share": 1.8
   },
   {
    "modelo": "haiku-4-5",
    "etiqueta": "Haiku 4.5",
    "color": "#10b981",
-   "coste": 12.5672,
-   "requests": 842.0,
-   "input": 17992.0,
-   "output": 390391.0,
-   "cache_read": 47291742.0,
-   "cache_write": 3461209.0,
+   "coste": 13.5696,
+   "requests": 931.0,
+   "input": 18708.0,
+   "output": 418600.0,
+   "cache_read": 53733933.0,
+   "cache_write": 3569443.0,
    "share": 1.0
   },
   {
@@ -361,19 +361,19 @@
   },
   {
    "dia": "2026-06-17",
-   "coste": 160.2623,
-   "requests": 919,
+   "coste": 180.7753,
+   "requests": 1118,
    "modelos": {
-    "opus-4-8": 144.3665,
+    "opus-4-8": 159.14,
     "fable-5": 0.0,
-    "sonnet-4-6": 15.2477,
-    "haiku-4-5": 0.6481,
+    "sonnet-4-6": 19.9847,
+    "haiku-4-5": 1.6506,
     "opus-4-7": 0.0
    },
-   "input": 79078,
-   "output": 1229732,
-   "cache_read": 171499446,
-   "cache_write": 5759457
+   "input": 97503,
+   "output": 1515786,
+   "cache_read": 194137333,
+   "cache_write": 6671302
   }
  ],
  "by_hour": [
@@ -489,13 +489,13 @@
   },
   {
    "hora": 22,
-   "coste": 92.0077,
-   "requests": 339
+   "coste": 94.7136,
+   "requests": 377
   },
   {
    "hora": 23,
-   "coste": 37.1924,
-   "requests": 116
+   "coste": 54.9994,
+   "requests": 277
   }
  ],
  "by_week": [
@@ -567,13 +567,13 @@
   {
    "semana": "2026-W25",
    "inicio": "2026-06-15",
-   "coste": 610.7464,
-   "requests": 2679,
+   "coste": 631.2594,
+   "requests": 2878,
    "modelos": {
-    "opus-4-8": 590.5408,
+    "opus-4-8": 605.3143,
     "fable-5": 0.0,
-    "sonnet-4-6": 18.0544,
-    "haiku-4-5": 2.1512,
+    "sonnet-4-6": 22.7915,
+    "haiku-4-5": 3.1537,
     "opus-4-7": 0.0
    }
   }
@@ -602,10 +602,10 @@
   },
   {
    "proyecto": "motor-agentico-basico",
-   "coste": 108.3561,
-   "requests": 665,
-   "sesiones": 8,
-   "tokens": 123438855
+   "coste": 127.9767,
+   "requests": 783,
+   "sesiones": 11,
+   "tokens": 141093687
   },
   {
    "proyecto": "fr4nc15co",
@@ -622,6 +622,13 @@
    "tokens": 3711152
   },
   {
+   "proyecto": "seeYourClaudeUsage",
+   "coste": 0.8923,
+   "requests": 81,
+   "sesiones": 1,
+   "tokens": 6199379
+  },
+  {
    "proyecto": "GraphifyYourProject",
    "coste": 0.5093,
    "requests": 15,
@@ -636,7 +643,171 @@
    "tokens": 90346
   }
  ],
+ "by_cliente": [
+  {
+   "cliente": "claude-desktop",
+   "etiqueta": "Escritorio / terminal",
+   "coste": 1340.5759,
+   "requests": 6499,
+   "sesiones": 51,
+   "share": 100.0
+  },
+  {
+   "cliente": "claude-vscode",
+   "etiqueta": "VS Code",
+   "coste": 0.5708,
+   "requests": 31,
+   "sesiones": 3,
+   "share": 0.0
+  }
+ ],
  "sesiones": [
+  {
+   "id": "3886f822-5a18-4aa9-a087-4714726142c3",
+   "proyecto": "seeYourClaudeUsage",
+   "subagente": false,
+   "categoria": "Programación",
+   "inicio": "2026-06-17T23:41:32.667000+02:00",
+   "fin": "2026-06-17T23:47:14.245000+02:00",
+   "duracion_min": 5.7,
+   "coste": 0.8923,
+   "requests": 81,
+   "input": 650,
+   "output": 24918,
+   "cache_read": 6095010,
+   "cache_write": 78801,
+   "modelo_top": "haiku-4-5",
+   "modelos": {
+    "haiku-4-5": 0.8923
+   },
+   "msgs_user": null,
+   "msgs_assist": null,
+   "tools": {},
+   "languages": {},
+   "git_commits": null,
+   "git_pushes": null,
+   "files_mod": null,
+   "lineas_mas": null,
+   "lineas_menos": null,
+   "tool_errors": null,
+   "primer_prompt": "",
+   "objetivo": null,
+   "resultado": null,
+   "satisfaccion": null,
+   "ayuda": null,
+   "friccion": null,
+   "tipo_sesion": null
+  },
+  {
+   "id": "a0952781-7193-4e0f-bc8d-a6a5df11a292",
+   "proyecto": "motor-agentico-basico",
+   "subagente": false,
+   "categoria": "Programación",
+   "inicio": "2026-06-17T23:31:21.503000+02:00",
+   "fin": "2026-06-17T23:38:07.326000+02:00",
+   "duracion_min": 6.8,
+   "coste": 0.4059,
+   "requests": 10,
+   "input": 9722,
+   "output": 4521,
+   "cache_read": 394297,
+   "cache_write": 48754,
+   "modelo_top": "opus-4-8",
+   "modelos": {
+    "opus-4-8": 0.2958,
+    "haiku-4-5": 0.1101
+   },
+   "msgs_user": null,
+   "msgs_assist": null,
+   "tools": {},
+   "languages": {},
+   "git_commits": null,
+   "git_pushes": null,
+   "files_mod": null,
+   "lineas_mas": null,
+   "lineas_menos": null,
+   "tool_errors": null,
+   "primer_prompt": "",
+   "objetivo": null,
+   "resultado": null,
+   "satisfaccion": null,
+   "ayuda": null,
+   "friccion": null,
+   "tipo_sesion": null
+  },
+  {
+   "id": "872c0e95-5c1b-4462-bc9e-efa55fdbe107",
+   "proyecto": "motor-agentico-basico",
+   "subagente": false,
+   "categoria": "Programación",
+   "inicio": "2026-06-17T22:47:16.088000+02:00",
+   "fin": "2026-06-17T23:39:20.743000+02:00",
+   "duracion_min": 52.1,
+   "coste": 9.9114,
+   "requests": 56,
+   "input": 1014,
+   "output": 221717,
+   "cache_read": 6935144,
+   "cache_write": 326876,
+   "modelo_top": "opus-4-8",
+   "modelos": {
+    "sonnet-4-6": 3.5593,
+    "opus-4-8": 6.3521
+   },
+   "msgs_user": null,
+   "msgs_assist": null,
+   "tools": {},
+   "languages": {},
+   "git_commits": null,
+   "git_pushes": null,
+   "files_mod": null,
+   "lineas_mas": null,
+   "lineas_menos": null,
+   "tool_errors": null,
+   "primer_prompt": "",
+   "objetivo": null,
+   "resultado": null,
+   "satisfaccion": null,
+   "ayuda": null,
+   "friccion": null,
+   "tipo_sesion": null
+  },
+  {
+   "id": "ff313e83-897b-4eba-b2c2-5e4fafa76b6c",
+   "proyecto": "motor-agentico-basico",
+   "subagente": false,
+   "categoria": "Programación",
+   "inicio": "2026-06-17T22:37:04.285000+02:00",
+   "fin": "2026-06-17T22:42:53.675000+02:00",
+   "duracion_min": 5.8,
+   "coste": 1.1278,
+   "requests": 31,
+   "input": 2296,
+   "output": 13823,
+   "cache_read": 1561962,
+   "cache_write": 74159,
+   "modelo_top": "sonnet-4-6",
+   "modelos": {
+    "sonnet-4-6": 1.1278
+   },
+   "msgs_user": null,
+   "msgs_assist": null,
+   "tools": {},
+   "languages": {},
+   "git_commits": null,
+   "git_pushes": null,
+   "files_mod": null,
+   "lineas_mas": null,
+   "lineas_menos": null,
+   "tool_errors": null,
+   "primer_prompt": "",
+   "objetivo": null,
+   "resultado": null,
+   "satisfaccion": null,
+   "ayuda": null,
+   "friccion": null,
+   "tipo_sesion": null
+  },
   {
    "id": "3e2f7f3f-d698-43aa-a5b4-1059a4c1ce53",
    "proyecto": "web-sistemasElectronicos",
@@ -679,17 +850,17 @@
    "subagente": true,
    "categoria": "Programación",
    "inicio": "2026-06-17T21:20:47.620000+02:00",
-   "fin": "2026-06-17T22:34:37.129000+02:00",
-   "duracion_min": 73.8,
-   "coste": 4.1238,
-   "requests": 67,
-   "input": 102,
-   "output": 76975,
-   "cache_read": 7101960,
-   "cache_write": 204620,
+   "fin": "2026-06-17T22:34:42.483000+02:00",
+   "duracion_min": 73.9,
+   "coste": 4.1738,
+   "requests": 68,
+   "input": 103,
+   "output": 77163,
+   "cache_read": 7255408,
+   "cache_write": 204805,
    "modelo_top": "sonnet-4-6",
    "modelos": {
-    "sonnet-4-6": 4.0088,
+    "sonnet-4-6": 4.0587,
     "haiku-4-5": 0.115
    },
    "msgs_user": null,
@@ -863,17 +1034,17 @@
    "subagente": false,
    "categoria": "Programación",
    "inicio": "2026-06-17T17:56:53.018000+02:00",
-   "fin": "2026-06-17T20:03:08.301000+02:00",
-   "duracion_min": 126.3,
-   "coste": 25.0838,
-   "requests": 120,
-   "input": 9332,
-   "output": 242425,
-   "cache_read": 30947206,
-   "cache_write": 350293,
+   "fin": "2026-06-17T23:08:37.530000+02:00",
+   "duracion_min": 311.7,
+   "coste": 33.2094,
+   "requests": 140,
+   "input": 14074,
+   "output": 263312,
+   "cache_read": 38445232,
+   "cache_write": 733363,
    "modelo_top": "opus-4-8",
    "modelos": {
-    "opus-4-8": 25.0838
+    "opus-4-8": 33.2094
    },
    "msgs_user": null,
    "msgs_assist": null,
@@ -3034,8 +3205,8 @@
    18.1353,
    10.2727,
    5.5658,
-   6.6301,
-   0.0
+   9.3361,
+   17.8071
   ],
   [
    0.0,
@@ -3162,7 +3333,7 @@
    },
    {
     "mes": "2026-06",
-    "api": 1315.9807,
+    "api": 1336.4938,
     "planes": {
      "Pro": 20,
      "Teams Standard": 25,
@@ -3172,7 +3343,7 @@
     }
    }
   ],
-  "api_total": 1320.63,
+  "api_total": 1341.15,
   "planes_mes": {
    "Pro": 20,
    "Teams Standard": 25,
@@ -3192,55 +3363,57 @@
    "coste": 40
   },
   "ahorro_vs": {
-   "Pro": -1280.63,
-   "Teams Standard": -1270.63,
-   "Teams Premium 5x": -1070.63,
-   "Max 5x": -1120.63,
-   "Max 20x": -920.63
+   "Pro": -1301.15,
+   "Teams Standard": -1291.15,
+   "Teams Premium 5x": -1091.15,
+   "Max 5x": -1141.15,
+   "Max 20x": -941.15
   },
-  "roi_multiplicador": 33.0,
-  "roi_pct": 3202.0
+  "roi_multiplicador": 33.5,
+  "roi_pct": 3253.0
  },
  "eficiencia": {
-  "coste_por_sesion": 26.4127,
-  "coste_por_dia_activo": 77.68,
+  "coste_por_sesion": 24.8361,
+  "coste_por_dia_activo": 78.89,
   "dias_activos": 17,
-  "output_por_dolar": 4498,
-  "tokens_por_dolar": 5182,
+  "output_por_dolar": 4642,
+  "tokens_por_dolar": 5329,
   "ahorro_cache_pct": 82.1
  },
  "presupuesto": {
   "mes": "2026-06",
-  "gasto_mes": 1315.9807,
+  "gasto_mes": 1336.4938,
   "dia_mes": 17,
   "dias_mes": 30,
-  "media_diaria": 77.4106,
-  "proyeccion": 2322.3189,
+  "media_diaria": 78.6173,
+  "proyeccion": 2358.5184,
   "presupuesto": 0.0,
   "pct_usado": null,
   "pct_proyectado": null,
   "restante": null
  },
  "cache": {
-  "read_tokens": 1272306566,
-  "write_tokens": 49629873,
-  "coste_lectura": 674.4514,
-  "coste_escritura": 493.3239,
-  "ahorro_estimado": 6070.06,
+  "read_tokens": 1294944453,
+  "write_tokens": 50541718,
+  "coste_lectura": 682.75,
+  "coste_escritura": 500.5868,
+  "ahorro_estimado": 6144.75,
   "ratio_lectura": 96.2
  },
  "limites": {
-  "alta_confianza": 17,
+  "alta_confianza": 18,
   "limite_uso": 13,
   "categorias": {
    "error de servidor": 1,
    "límite de uso": 13,
+   "otro": 1,
    "acceso a modelo": 2,
    "prompt demasiado largo": 1
   },
   "por_dia": {
    "2026-06-16": 1,
    "2026-06-11": 13,
+   "2026-06-17": 1,
    "2026-06-14": 2,
    "2026-06-12": 1
   },
@@ -3260,6 +3433,14 @@
     "proyecto": "fr4nc15co",
     "sesion": "9cd7b973-908d-4ddb-a505-a27f7602080d",
     "texto": "You've hit your session limit · resets 1:10am (Europe/Madrid)"
+   },
+   {
+    "ts": "2026-06-17T23:26:35.184000+02:00",
+    "dia": "2026-06-17",
+    "categoria": "otro",
+    "proyecto": "motor-agentico-basico",
+    "sesion": "872c0e95-5c1b-4462-bc9e-efa55fdbe107",
+    "texto": "API Error: Claude's response exceeded the 32000 output token maximum. To configure this behavior, set the CLAUDE_CODE_MAX_OUTPUT_TOKENS environment variable."
    },
    {
     "ts": "2026-06-14T23:50:18.460000+02:00",
@@ -3569,10 +3750,10 @@
  "by_categoria": [
   {
    "categoria": "Programación",
-   "coste": 597.5671,
-   "sesiones": 25,
-   "requests": 2645,
-   "tokens": 518685086
+   "coste": 618.0801,
+   "sesiones": 29,
+   "requests": 2844,
+   "tokens": 542539297
   },
   {
    "categoria": "Orquestación",
@@ -3641,33 +3822,33 @@
  "herramientas": [
   {
    "nombre": "Bash",
-   "veces": 2218,
-   "sesiones": 49
+   "veces": 2286,
+   "sesiones": 53
   },
   {
    "nombre": "Edit",
-   "veces": 1406,
-   "sesiones": 40
+   "veces": 1483,
+   "sesiones": 44
   },
   {
    "nombre": "Read",
-   "veces": 1326,
-   "sesiones": 47
+   "veces": 1365,
+   "sesiones": 51
   },
   {
    "nombre": "mcp__Claude_Preview__preview_eval",
-   "veces": 659,
-   "sesiones": 28
+   "veces": 663,
+   "sesiones": 29
   },
   {
    "nombre": "mcp__Claude_Preview__preview_screenshot",
-   "veces": 245,
+   "veces": 246,
    "sesiones": 25
   },
   {
    "nombre": "Write",
-   "veces": 205,
-   "sesiones": 34
+   "veces": 208,
+   "sesiones": 35
   },
   {
    "nombre": "TaskUpdate",
@@ -3676,13 +3857,13 @@
   },
   {
    "nombre": "mcp__Claude_Preview__preview_console_logs",
-   "veces": 91,
+   "veces": 92,
    "sesiones": 23
   },
   {
    "nombre": "ToolSearch",
-   "veces": 86,
-   "sesiones": 34
+   "veces": 91,
+   "sesiones": 35
   },
   {
    "nombre": "TaskCreate",
@@ -3696,8 +3877,8 @@
   },
   {
    "nombre": "AskUserQuestion",
-   "veces": 53,
-   "sesiones": 20
+   "veces": 54,
+   "sesiones": 21
   },
   {
    "nombre": "StructuredOutput",
@@ -3716,8 +3897,8 @@
   },
   {
    "nombre": "mcp__ccd_session__mark_chapter",
-   "veces": 21,
-   "sesiones": 15
+   "veces": 22,
+   "sesiones": 16
   },
   {
    "nombre": "WebSearch",
@@ -3731,8 +3912,8 @@
   },
   {
    "nombre": "mcp__Claude_Preview__preview_list",
-   "veces": 13,
-   "sesiones": 11
+   "veces": 14,
+   "sesiones": 12
   },
   {
    "nombre": "mcp__Claude_Preview__preview_click",
@@ -3776,6 +3957,15 @@
    "max_relec": 86
   },
   {
+   "archivo": "plantilla_html.py",
+   "read": 56,
+   "edit": 166,
+   "write": 2,
+   "total": 224,
+   "sesiones": 9,
+   "max_relec": 17
+  },
+  {
    "archivo": "webgui.py",
    "read": 74,
    "edit": 97,
@@ -3794,15 +3984,6 @@
    "max_relec": 14
   },
   {
-   "archivo": "plantilla_html.py",
-   "read": 27,
-   "edit": 102,
-   "write": 2,
-   "total": 131,
-   "sesiones": 7,
-   "max_relec": 8
-  },
-  {
    "archivo": "index.html",
    "read": 35,
    "edit": 61,
@@ -3814,11 +3995,20 @@
   {
    "archivo": "analizar.py",
    "read": 24,
-   "edit": 50,
+   "edit": 57,
    "write": 1,
-   "total": 75,
+   "total": 82,
    "sesiones": 7,
    "max_relec": 6
+  },
+  {
+   "archivo": "README.md",
+   "read": 39,
+   "edit": 36,
+   "write": 5,
+   "total": 80,
+   "sesiones": 26,
+   "max_relec": 5
   },
   {
    "archivo": "prototype_v1.html",
@@ -3828,15 +4018,6 @@
    "total": 74,
    "sesiones": 2,
    "max_relec": 14
-  },
-  {
-   "archivo": "README.md",
-   "read": 35,
-   "edit": 34,
-   "write": 4,
-   "total": 73,
-   "sesiones": 23,
-   "max_relec": 5
   },
   {
    "archivo": "build_model.py",
@@ -3939,11 +4120,11 @@
   },
   {
    "archivo": "MEMORY.md",
-   "read": 10,
-   "edit": 13,
+   "read": 11,
+   "edit": 14,
    "write": 6,
-   "total": 29,
-   "sesiones": 13,
+   "total": 31,
+   "sesiones": 14,
    "max_relec": 2
   }
  ],
@@ -4012,6 +4193,15 @@
    "max_relec": 18
   },
   {
+   "archivo": "plantilla_html.py",
+   "read": 56,
+   "edit": 166,
+   "write": 2,
+   "total": 224,
+   "sesiones": 9,
+   "max_relec": 17
+  },
+  {
    "archivo": "pv_model_inputs_exporter.py",
    "read": 23,
    "edit": 13,
@@ -4028,37 +4218,28 @@
    "total": 44,
    "sesiones": 3,
    "max_relec": 15
-  },
-  {
-   "archivo": "i18n.js",
-   "read": 28,
-   "edit": 104,
-   "write": 1,
-   "total": 133,
-   "sesiones": 5,
-   "max_relec": 14
   }
  ],
  "bash_top": [
   {
    "cmd": "grep",
-   "veces": 585
+   "veces": 606
   },
   {
    "cmd": "cd",
-   "veces": 510
+   "veces": 519
   },
   {
    "cmd": "python3",
-   "veces": 200
+   "veces": 207
   },
   {
    "cmd": "ls",
-   "veces": 195
+   "veces": 204
   },
   {
    "cmd": "find",
-   "veces": 116
+   "veces": 119
   },
   {
    "cmd": "echo",
@@ -4073,12 +4254,12 @@
    "veces": 55
   },
   {
-   "cmd": "cat",
-   "veces": 42
+   "cmd": "git",
+   "veces": 47
   },
   {
-   "cmd": "git",
-   "veces": 37
+   "cmd": "cat",
+   "veces": 42
   },
   {
    "cmd": "source",
@@ -4086,16 +4267,16 @@
   },
   {
    "cmd": "rm",
-   "veces": 25
+   "veces": 26
   }
  ],
  "outcomes": {
   "conteo": {
-   "desconocido": 19,
+   "desconocido": 23,
    "logrado": 30,
    "otro": 1
   },
   "con_dato": 31,
-  "total": 50
+  "total": 54
  }
 }

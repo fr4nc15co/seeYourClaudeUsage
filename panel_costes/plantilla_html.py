@@ -161,11 +161,12 @@ PLANTILLA = r"""<!DOCTYPE html>
 <div class="wrap">
 
   <header class="top">
-    <h1>Panel de costes · Claude Code
+    <h1><span data-i18n>Panel de costes · Claude Code</span>
         <small id="hdrsub"></small></h1>
     <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
       <div class="badges" id="badges"></div>
-      <button class="cfg-btn" id="btn_cfg" title="Configuración de tarifas y planes">⚙ Configuración</button>
+      <button class="cfg-btn" id="btn_lang" title="Switch to English">EN</button>
+      <button class="cfg-btn" id="btn_cfg" data-i18n-title title="Configuración de tarifas y planes"><span data-i18n>⚙ Configuración</span></button>
     </div>
   </header>
 
@@ -177,21 +178,21 @@ PLANTILLA = r"""<!DOCTYPE html>
 
   <!-- Barra de tabs (sticky) -->
   <div class="tabs-wrap">
-    <nav class="tabs" role="tablist" aria-label="Secciones del panel">
+    <nav class="tabs" role="tablist" data-i18n-aria aria-label="Secciones del panel">
       <button class="tab-btn active" data-tab="costes" role="tab">
-        <span class="tab-icon">💰</span>Costes<span class="tbadge" id="tb-costes"></span>
+        <span class="tab-icon">💰</span><span data-i18n>Costes</span><span class="tbadge" id="tb-costes"></span>
       </button>
       <button class="tab-btn" data-tab="productividad" role="tab">
-        <span class="tab-icon">🎯</span>Productividad<span class="tbadge" id="tb-productividad"></span>
+        <span class="tab-icon">🎯</span><span data-i18n>Productividad</span><span class="tbadge" id="tb-productividad"></span>
       </button>
       <button class="tab-btn" data-tab="actividad" role="tab">
-        <span class="tab-icon">📊</span>Actividad<span class="tbadge" id="tb-actividad"></span>
+        <span class="tab-icon">📊</span><span data-i18n>Actividad</span><span class="tbadge" id="tb-actividad"></span>
       </button>
       <button class="tab-btn" data-tab="sesiones" role="tab">
-        <span class="tab-icon">📋</span>Sesiones<span class="tbadge" id="tb-sesiones"></span>
+        <span class="tab-icon">📋</span><span data-i18n>Sesiones</span><span class="tbadge" id="tb-sesiones"></span>
       </button>
       <button class="tab-btn" data-tab="recomendaciones" role="tab">
-        <span class="tab-icon">💡</span>Recomendaciones<span class="tbadge" id="tb-recomendaciones"></span>
+        <span class="tab-icon">💡</span><span data-i18n>Recomendaciones</span><span class="tbadge" id="tb-recomendaciones"></span>
       </button>
     </nav>
   </div>
@@ -202,18 +203,18 @@ PLANTILLA = r"""<!DOCTYPE html>
        ============================================================ -->
   <div class="panel active" id="panel-costes" role="tabpanel">
     <div class="panel-body">
-      <h2>Gasto en el tiempo <span class="hint">(apilado por modelo · tarifas API)</span>
-        <select class="gran-sel rango-sel" title="Rango temporal (afecta a este gráfico, al donut y al de tokens)">
-          <option value="todo">Todo</option>
-          <option value="7">Últ. 7 días</option>
-          <option value="30">Últ. 30 días</option>
-          <option value="90">Últ. 90 días</option>
-          <option value="mes">Este mes</option>
+      <h2><span data-i18n>Gasto en el tiempo</span> <span class="hint" data-i18n>(apilado por modelo · tarifas API)</span>
+        <select class="gran-sel rango-sel" data-i18n-title title="Rango temporal (afecta a este gráfico, al donut y al de tokens)">
+          <option value="todo" data-i18n>Todo</option>
+          <option value="7" data-i18n>Últ. 7 días</option>
+          <option value="30" data-i18n>Últ. 30 días</option>
+          <option value="90" data-i18n>Últ. 90 días</option>
+          <option value="mes" data-i18n>Este mes</option>
         </select>
         <select id="gran_costes" class="gran-sel">
-          <option value="dia">Por día</option>
-          <option value="semana">Por semana</option>
-          <option value="mes">Por mes</option>
+          <option value="dia" data-i18n>Por día</option>
+          <option value="semana" data-i18n>Por semana</option>
+          <option value="mes" data-i18n>Por mes</option>
         </select></h2>
       <div class="section-note" id="periodo_costes" style="margin:2px 0 10px"></div>
       <div class="cols c2">
@@ -224,22 +225,22 @@ PLANTILLA = r"""<!DOCTYPE html>
         </div>
       </div>
 
-      <h2>Coste por hora del día <span class="hint">(suma de todos los días · hora local)</span></h2>
+      <h2><span data-i18n>Coste por hora del día</span> <span class="hint" data-i18n>(suma de todos los días · hora local)</span></h2>
       <div class="card chartbox" id="chart_hour"></div>
 
-      <h2>Mapa de calor <span class="hint">(día × hora · intensidad = gasto acumulado)</span></h2>
+      <h2><span data-i18n>Mapa de calor</span> <span class="hint" data-i18n>(día × hora · intensidad = gasto acumulado)</span></h2>
       <div class="card chartbox" id="heat"></div>
 
-      <h2>ROI y eficiencia</h2>
+      <h2 data-i18n>ROI y eficiencia</h2>
       <div class="grid kpis" id="roi_kpis"></div>
 
-      <h2>Mes en curso <span class="hint">(mes natural · proyección a fin de mes)</span></h2>
+      <h2><span data-i18n>Mes en curso</span> <span class="hint" data-i18n>(mes natural · proyección a fin de mes)</span></h2>
       <div class="card" id="budget_box"></div>
 
-      <h2>Desglose por modelo <span class="hint">(histórico completo)</span></h2>
+      <h2><span data-i18n>Desglose por modelo</span> <span class="hint" data-i18n>(histórico completo)</span></h2>
       <div class="card"><div class="tablebox" style="max-height:none"><table id="tbl_model"></table></div></div>
 
-      <h2>Suscripción vs pago por uso (API) <span class="hint">por mes</span></h2>
+      <h2><span data-i18n>Suscripción vs pago por uso (API)</span> <span class="hint" data-i18n>por mes</span></h2>
       <div class="cols c2">
         <div class="card chartbox" id="chart_subs"></div>
         <div class="card" id="subs_verdict"></div>
@@ -253,31 +254,31 @@ PLANTILLA = r"""<!DOCTYPE html>
        ============================================================ -->
   <div class="panel" id="panel-actividad" role="tabpanel">
     <div class="panel-body">
-      <h2>Tokens en el tiempo <span class="hint">(entrada / salida / cache lectura / cache escritura)</span>
-        <select class="gran-sel rango-sel" title="Rango temporal (compartido con la pestaña Costes)">
-          <option value="todo">Todo</option>
-          <option value="7">Últ. 7 días</option>
-          <option value="30">Últ. 30 días</option>
-          <option value="90">Últ. 90 días</option>
-          <option value="mes">Este mes</option>
+      <h2><span data-i18n>Tokens en el tiempo</span> <span class="hint" data-i18n>(entrada / salida / cache lectura / cache escritura)</span>
+        <select class="gran-sel rango-sel" data-i18n-title title="Rango temporal (compartido con la pestaña Costes)">
+          <option value="todo" data-i18n>Todo</option>
+          <option value="7" data-i18n>Últ. 7 días</option>
+          <option value="30" data-i18n>Últ. 30 días</option>
+          <option value="90" data-i18n>Últ. 90 días</option>
+          <option value="mes" data-i18n>Este mes</option>
         </select>
         <select id="gran_tokens" class="gran-sel">
-          <option value="dia">Por día</option>
-          <option value="semana">Por semana</option>
-          <option value="mes">Por mes</option>
+          <option value="dia" data-i18n>Por día</option>
+          <option value="semana" data-i18n>Por semana</option>
+          <option value="mes" data-i18n>Por mes</option>
         </select></h2>
       <div class="section-note" id="periodo_tokens" style="margin:2px 0 10px"></div>
       <div class="card chartbox" id="chart_tokens"></div>
       <div class="legend" id="legend_tokens" style="padding-left:4px"></div>
 
-      <h2 style="margin-top:22px">Tokens por modelo <span class="hint">(total y composición: entrada / salida / caché)</span></h2>
+      <h2 style="margin-top:22px"><span data-i18n>Tokens por modelo</span> <span class="hint" data-i18n>(total y composición: entrada / salida / caché)</span></h2>
       <div class="cols c2">
         <div class="card chartbox" id="chart_tok_model"></div>
         <div class="card" style="padding:0"><div class="tablebox" style="max-height:none"><table id="tbl_tok_model"></table></div></div>
       </div>
       <div class="legend" id="legend_tok_model" style="padding-left:4px;margin-top:10px"></div>
 
-      <h2 style="margin-top:22px">Tipos de actividad <span class="hint">(coste por tipo de tarea · clasificación automática, sin IA)</span></h2>
+      <h2 style="margin-top:22px"><span data-i18n>Tipos de actividad</span> <span class="hint" data-i18n>(coste por tipo de tarea · clasificación automática, sin IA)</span></h2>
       <div id="cat_outcomes" style="margin:2px 0 12px"></div>
       <div class="cols c2">
         <div class="card">
@@ -285,20 +286,23 @@ PLANTILLA = r"""<!DOCTYPE html>
           <div class="legend" id="legend_cat"></div>
         </div>
         <div class="card">
-          <b style="font-size:13px;color:#cdd6e8">Herramientas más usadas</b>
-          <p class="section-note" style="margin-top:2px">Recuento de invocaciones de cada tool en todas las sesiones.</p>
+          <b style="font-size:13px;color:#cdd6e8" data-i18n>Herramientas más usadas</b>
+          <p class="section-note" style="margin-top:2px" data-i18n>Recuento de invocaciones de cada tool en todas las sesiones.</p>
           <div id="tools_box" style="margin-top:10px"></div>
         </div>
       </div>
 
-      <h2 style="margin-top:14px">Gasto por proyecto</h2>
+      <h2 style="margin-top:18px"><span data-i18n>Uso por cliente</span> <span class="hint" data-i18n>(desde dónde se usó Claude Code · escritorio/terminal vs VS Code · campo entrypoint)</span></h2>
+      <div class="card" id="cliente_box"></div>
+
+      <h2 style="margin-top:14px" data-i18n>Gasto por proyecto</h2>
       <div class="card" id="chart_proj"></div>
 
-      <h2 style="margin-top:18px">Archivos y patrones <span class="hint">(ficheros más tocados · repetición · comandos de shell)</span></h2>
+      <h2 style="margin-top:18px"><span data-i18n>Archivos y patrones</span> <span class="hint" data-i18n>(ficheros más tocados · repetición · comandos de shell)</span></h2>
       <div class="cols c2">
         <div class="card" style="padding:0"><div class="tablebox" style="max-height:380px"><table id="tbl_archivos"></table></div></div>
         <div class="card">
-          <b style="font-size:13px;color:#cdd6e8">Comandos de shell más usados</b>
+          <b style="font-size:13px;color:#cdd6e8" data-i18n>Comandos de shell más usados</b>
           <div id="bash_box" style="margin-top:10px"></div>
           <div id="relec_box" style="margin-top:16px"></div>
         </div>
@@ -313,7 +317,7 @@ PLANTILLA = r"""<!DOCTYPE html>
        ============================================================ -->
   <div class="panel" id="panel-recomendaciones" role="tabpanel">
     <div class="panel-body">
-      <h2>Recomendaciones de modelo <span class="hint">(¿dónde usar un modelo más barato?)</span></h2>
+      <h2><span data-i18n>Recomendaciones de modelo</span> <span class="hint" data-i18n>(¿dónde usar un modelo más barato?)</span></h2>
       <div class="grid kpis" id="rs_kpis" style="margin-bottom:14px"></div>
       <div class="cols c2">
         <div class="card" id="rs_guide"></div>
@@ -324,7 +328,7 @@ PLANTILLA = r"""<!DOCTYPE html>
       </div>
       <p class="section-note" id="rs_note"></p>
 
-      <h2 style="margin-top:34px">Ajuste por tipo de actividad <span class="hint">(¿qué categorías de tarea corren en un modelo más caro del necesario?)</span></h2>
+      <h2 style="margin-top:34px"><span data-i18n>Ajuste por tipo de actividad</span> <span class="hint" data-i18n>(¿qué categorías de tarea corren en un modelo más caro del necesario?)</span></h2>
       <div class="grid kpis" id="aj_kpis" style="margin-bottom:14px"></div>
       <div class="card" id="aj_recs"></div>
       <div id="aj_tblwrap" class="card" style="padding:0;margin-top:14px">
@@ -332,7 +336,7 @@ PLANTILLA = r"""<!DOCTYPE html>
       </div>
       <p class="section-note" id="aj_note"></p>
 
-      <h2 style="margin-top:34px">Auto-mejora <span class="hint">(el panel aprende y se afina en cada ejecución)</span></h2>
+      <h2 style="margin-top:34px"><span data-i18n>Auto-mejora</span> <span class="hint" data-i18n>(el panel aprende y se afina en cada ejecución)</span></h2>
       <div class="card" id="improve_box"></div>
     </div>
   </div>
@@ -343,26 +347,26 @@ PLANTILLA = r"""<!DOCTYPE html>
        ============================================================ -->
   <div class="panel" id="panel-sesiones" role="tabpanel">
     <div class="panel-body">
-      <h2>Sesiones <span class="hint">(coste, tokens, actividad y resultado)</span></h2>
+      <h2><span data-i18n>Sesiones</span> <span class="hint" data-i18n>(coste, tokens, actividad y resultado)</span></h2>
       <div class="controls">
         <select id="f_proj"></select>
         <select id="f_cat"></select>
-        <input type="search" id="f_text" placeholder="buscar prompt / objetivo…">
+        <input type="search" id="f_text" data-i18n-ph placeholder="buscar prompt / objetivo…">
         <span class="mut small" id="sess_count"></span>
-        <button class="btn-action" id="btn_csv" style="margin-left:auto" title="Descarga las sesiones filtradas en CSV">⬇ Exportar CSV</button>
+        <button class="btn-action" id="btn_csv" style="margin-left:auto" data-i18n-title title="Descarga las sesiones filtradas en CSV"><span data-i18n>⬇ Exportar CSV</span></button>
       </div>
       <div class="card" style="padding:0"><div class="tablebox"><table id="tbl_sess"></table></div></div>
 
-      <h2 style="margin-top:22px">Skills invocadas</h2>
+      <h2 style="margin-top:22px" data-i18n>Skills invocadas</h2>
       <div class="card" id="skills_box"></div>
 
-      <h2 style="margin-top:22px">Caché y límites de uso</h2>
+      <h2 style="margin-top:22px" data-i18n>Caché y límites de uso</h2>
       <div class="cols c2b">
         <div class="card" id="cache_box"></div>
         <div class="card" id="limits_box"></div>
       </div>
 
-      <h2 style="margin-top:22px">Memoria acumulada del panel</h2>
+      <h2 style="margin-top:22px" data-i18n>Memoria acumulada del panel</h2>
       <div class="card" id="memory_box"></div>
     </div>
   </div>
@@ -373,13 +377,13 @@ PLANTILLA = r"""<!DOCTYPE html>
        ============================================================ -->
   <div class="panel" id="panel-productividad" role="tabpanel">
     <div class="panel-body">
-      <h2>Código generado <span class="hint">(commits · líneas añadidas/eliminadas · datos de session-meta)</span></h2>
+      <h2><span data-i18n>Código generado</span> <span class="hint" data-i18n>(commits · líneas añadidas/eliminadas · datos de session-meta)</span></h2>
       <div class="card chartbox" id="chart_git_day"></div>
 
-      <h2 style="margin-top:22px">Resultado de sesiones por semana <span class="hint">(outcomes de facets)</span></h2>
+      <h2 style="margin-top:22px"><span data-i18n>Resultado de sesiones por semana</span> <span class="hint" data-i18n>(outcomes de facets)</span></h2>
       <div class="card chartbox" id="chart_outcomes_week"></div>
 
-      <h2 style="margin-top:22px">Lenguajes de programación y tipos de sesión</h2>
+      <h2 style="margin-top:22px" data-i18n>Lenguajes de programación y tipos de sesión</h2>
       <div class="cols c2b">
         <div class="card">
           <div id="donut_langs"></div>
@@ -391,10 +395,10 @@ PLANTILLA = r"""<!DOCTYPE html>
         </div>
       </div>
 
-      <h2 style="margin-top:22px">Distribución de duración de sesiones</h2>
+      <h2 style="margin-top:22px" data-i18n>Distribución de duración de sesiones</h2>
       <div class="card chartbox" id="chart_dur_hist"></div>
 
-      <h2 style="margin-top:22px">Tasks por proyecto <span class="hint">(estado de las tareas en ~/.claude/tasks/)</span></h2>
+      <h2 style="margin-top:22px"><span data-i18n>Tasks por proyecto</span> <span class="hint" data-i18n>(estado de las tareas en ~/.claude/tasks/)</span></h2>
       <div class="card" id="tasks_box"></div>
     </div>
   </div>
@@ -408,12 +412,12 @@ PLANTILLA = r"""<!DOCTYPE html>
 <div class="ov-bg" id="ov_cfg" role="dialog" aria-modal="true" aria-label="Configuración">
   <div class="ov-box">
     <div class="ov-hdr">
-      <h2>⚙ Configuración de tarifas y planes</h2>
-      <button class="ov-close" id="btn_cfg_close" aria-label="Cerrar configuración">×</button>
+      <h2 data-i18n>⚙ Configuración de tarifas y planes</h2>
+      <button class="ov-close" id="btn_cfg_close" data-i18n-aria aria-label="Cerrar configuración">×</button>
     </div>
     <div class="card" id="precios_editor"></div>
     <div id="precios_actions" style="margin-top:12px;display:flex;gap:12px;align-items:center">
-      <button class="btn-action" id="btn_save_precios">💾 Guardar y recalcular</button>
+      <button class="btn-action" id="btn_save_precios" data-i18n>💾 Guardar y recalcular</button>
       <span class="small" id="precios_status"></span>
     </div>
   </div>
@@ -422,6 +426,305 @@ PLANTILLA = r"""<!DOCTYPE html>
 <script>
 const PAYLOAD = __DATOS__;
 const D = PAYLOAD.datos, M = PAYLOAD.mejora, MC = PAYLOAD.memoria_claude;
+
+/* ===================== i18n (ES / EN) =====================
+   "Spanish-as-key": _t("texto") devuelve la propia clave en ES (salida idéntica
+   a la original) y busca la traducción en TR.en cuando el idioma es inglés.
+   El selector escribe en localStorage y recarga. */
+const LANG=(function(){
+  try{ const s=localStorage.getItem("panel_lang"); if(s==="en"||s==="es") return s; }catch(e){}
+  return (navigator.language||"es").slice(0,2)==="en"?"en":"es";
+})();
+document.documentElement.lang=LANG;
+const LOCALE=LANG==="en"?"en-US":"es-ES";
+const TR={en:{
+  /* --- cabecera / chrome --- */
+  "Panel de costes · Claude Code":"Cost panel · Claude Code",
+  "Generado":"Generated", "transcripts":"transcripts",
+  "● SOLO LECTURA sobre ~/.claude":"● READ-ONLY over ~/.claude",
+  "Tarifas API":"API rates",
+  "⚙ Configuración":"⚙ Settings",
+  "Configuración de tarifas y planes":"Rates and plans configuration",
+  "🔄 Actualizar ahora":"🔄 Refresh now",
+  "Regenera los datos en el servidor y recarga":"Regenerates data on the server and reloads",
+  "Actualizando…":"Refreshing…",
+  "Error — reintenta":"Error — retry",
+  "respuesta inesperada":"unexpected response",
+  "🟢 Datos nuevos — recargar":"🟢 New data — reload",
+  "Regenera los datos en el servidor y recarga":"Regenerates data on the server and reloads",
+  "El servidor regeneró los datos":"The server regenerated the data",
+  /* --- tabs --- */
+  "Secciones del panel":"Panel sections",
+  "Costes":"Costs", "Productividad":"Productivity", "Actividad":"Activity",
+  "Sesiones":"Sessions", "Recomendaciones":"Recommendations",
+  "ahorro":"saved", "lím.":"lim.", "sin errores":"no errors", "ses":"sess",
+  /* --- selectores de rango / granularidad --- */
+  "Todo":"All", "Últ. 7 días":"Last 7 days", "Últ. 30 días":"Last 30 days",
+  "Últ. 90 días":"Last 90 days", "Este mes":"This month",
+  "Por día":"By day", "Por semana":"By week", "Por mes":"By month",
+  "Rango temporal (afecta a este gráfico, al donut y al de tokens)":"Time range (affects this chart, the donut and the tokens chart)",
+  "Rango temporal (compartido con la pestaña Costes)":"Time range (shared with the Costs tab)",
+  "Rango del nivel de uso":"Usage level range",
+  /* --- TAB Costes --- */
+  "Gasto en el tiempo":"Spending over time",
+  "(apilado por modelo · tarifas API)":"(stacked by model · API rates)",
+  "Coste por hora del día":"Cost by hour of day",
+  "(suma de todos los días · hora local)":"(sum of all days · local time)",
+  "Suma de todos los días · por hora (local)":"Sum of all days · per hour (local)",
+  "Mapa de calor":"Heatmap",
+  "(día × hora · intensidad = gasto acumulado)":"(day × hour · intensity = accumulated spend)",
+  "Coste acumulado por día de semana y hora · color = intensidad":"Accumulated cost by weekday and hour · color = intensity",
+  "ROI y eficiencia":"ROI and efficiency",
+  "Mes en curso":"Current month",
+  "(mes natural · proyección a fin de mes)":"(calendar month · end-of-month projection)",
+  "Desglose por modelo":"Breakdown by model",
+  "(histórico completo)":"(full history)",
+  "Suscripción vs pago por uso (API)":"Subscription vs pay-per-use (API)",
+  "por mes":"per month",
+  /* --- TAB Actividad --- */
+  "coste por tipo":"cost by type",
+  "Tokens en el tiempo":"Tokens over time",
+  "(entrada / salida / cache lectura / cache escritura)":"(input / output / cache read / cache write)",
+  "Tokens por modelo":"Tokens by model",
+  "(total y composición: entrada / salida / caché)":"(total and composition: input / output / cache)",
+  "Tipos de actividad":"Activity types",
+  "(coste por tipo de tarea · clasificación automática, sin IA)":"(cost by task type · automatic classification, no AI)",
+  "Herramientas más usadas":"Most used tools",
+  "Recuento de invocaciones de cada tool en todas las sesiones.":"Invocation count of each tool across all sessions.",
+  "Gasto por proyecto":"Spending by project",
+  "Uso por cliente":"Usage by client",
+  "(desde dónde se usó Claude Code · escritorio/terminal vs VS Code · campo entrypoint)":"(where Claude Code was used from · desktop/terminal vs VS Code · entrypoint field)",
+  "Archivos y patrones":"Files and patterns",
+  "(ficheros más tocados · repetición · comandos de shell)":"(most touched files · repetition · shell commands)",
+  "Comandos de shell más usados":"Most used shell commands",
+  /* --- TAB Recomendaciones --- */
+  "Recomendaciones de modelo":"Model recommendations",
+  "(¿dónde usar un modelo más barato?)":"(where to use a cheaper model?)",
+  "Ajuste por tipo de actividad":"Adjustment by activity type",
+  "(¿qué categorías de tarea corren en un modelo más caro del necesario?)":"(which task categories run on a pricier model than needed?)",
+  "Auto-mejora":"Self-improvement",
+  "(el panel aprende y se afina en cada ejecución)":"(the panel learns and tunes itself on every run)",
+  /* --- TAB Sesiones --- */
+  "(coste, tokens, actividad y resultado)":"(cost, tokens, activity and outcome)",
+  "buscar prompt / objetivo…":"search prompt / goal…",
+  "⬇ Exportar CSV":"⬇ Export CSV",
+  "Descarga las sesiones filtradas en CSV":"Download the filtered sessions as CSV",
+  "Skills invocadas":"Skills invoked",
+  "Caché y límites de uso":"Cache and usage limits",
+  "Memoria acumulada del panel":"Panel accumulated memory",
+  /* --- TAB Productividad --- */
+  "Código generado":"Code generated",
+  "(commits · líneas añadidas/eliminadas · datos de session-meta)":"(commits · lines added/removed · session-meta data)",
+  "Resultado de sesiones por semana":"Session outcomes by week",
+  "(outcomes de facets)":"(facets outcomes)",
+  "Lenguajes de programación y tipos de sesión":"Programming languages and session types",
+  "Distribución de duración de sesiones":"Session duration distribution",
+  "Tasks por proyecto":"Tasks by project",
+  "(estado de las tareas en ~/.claude/tasks/)":"(task status in ~/.claude/tasks/)",
+  /* --- overlay configuración --- */
+  "⚙ Configuración de tarifas y planes":"⚙ Rates and plans configuration",
+  "Cerrar configuración":"Close configuration",
+  "💾 Guardar y recalcular":"💾 Save and recompute",
+  "Guardando…":"Saving…",
+  "Modelos API (USD por 1M tokens)":"API models (USD per 1M tokens)",
+  "Modelo":"Model", "Input":"Input", "Output":"Output",
+  "Web search (USD / 1000 búsquedas)":"Web search (USD / 1000 searches)",
+  "Fuente original:":"Original source:",
+  "Planes de suscripción (USD/mes)":"Subscription plans (USD/month)",
+  "Plan":"Plan", "$/mes":"$/mo",
+  "Precios a facturación anual (ajusta si pagas mensual).":"Prices at annual billing (adjust if you pay monthly).",
+  "Importes en € · tasa €/$":"Amounts in € · €/$ rate",
+  "Tu plan actual (se marca en la comparativa)":"Your current plan (highlighted in the comparison)",
+  "— ninguno (API) —":"— none (API) —",
+  "⚠ Edición solo disponible desde el servidor local (":"⚠ Editing only available from the local server (",
+  "Requiere el servidor local":"Requires the local server",
+  "✓ Guardado y recalculado — ":"✓ Saved and recomputed — ",
+  /* --- KPIs --- */
+  "Coste total (API)":"Total cost (API)", "llamadas":"calls",
+  "Tokens totales":"Total tokens", "Tokens de caché":"Cache tokens",
+  "lectura":"read", "escritura":"write",
+  "proyectos":"projects", "días":"days",
+  "coste total":"total cost", "coste periodo":"period cost",
+  "Límites de uso":"Usage limits", "errores API en total":"API errors in total",
+  "Ahorro por caché":"Cache savings", "ratio lectura":"read ratio",
+  "Mejor opción":"Best option", "mes(es)":"month(s)",
+  /* --- nivel de uso --- */
+  "Adicto perdido a Claude":"Hopelessly addicted to Claude",
+  "Esto ya no es uso, es una relación.":"This isn't usage anymore, it's a relationship.",
+  "Enganchado":"Hooked", "Lo abres más que el WhatsApp.":"You open it more than your messages.",
+  "Uso moderado":"Moderate use", "Uso con cabeza, sin pasarte.":"Sensible use, nothing crazy.",
+  "Uso ocasional":"Occasional use", "De vez en cuando, a ratos.":"Now and then, here and there.",
+  "Desenganchado":"Unplugged", "Claude te echa de menos.":"Claude misses you.",
+  "Nivel de uso":"Usage level",
+  "días activos":"active days", "llamadas/día":"calls/day",
+  /* --- rango / periodo --- */
+  "todo el histórico":"all history", "últimos 7 días":"last 7 days",
+  "últimos 30 días":"last 30 days", "últimos 90 días":"last 90 days", "este mes":"this month",
+  "Periodo:":"Period:", "tokens":"tokens", "sesiones":"sessions", "del total":"of total",
+  /* --- tablas / charts --- */
+  "Coste":"Cost", "Llamadas":"Calls", "Cache lect.":"Cache read", "Cache escr.":"Cache write",
+  "Entrada":"Input", "Salida":"Output", "Caché lectura":"Cache read", "Caché escritura":"Cache write",
+  "% del total":"% of total",
+  /* --- ROI --- */
+  "ROI suscripción":"Subscription ROI",
+  "Valor API generado ÷ coste de la suscripción. Cuántas veces recuperas la cuota.":"API value generated ÷ subscription cost. How many times you recoup the fee.",
+  "pago por uso (sin cuota fija)":"pay-per-use (no fixed fee)",
+  "Coste por sesión":"Cost per session", "días totales":"total days",
+  "Coste API medio por sesión de Claude Code.":"Average API cost per Claude Code session.",
+  "Coste / día activo":"Cost / active day", "días con actividad":"days with activity",
+  "Coste API en los días en que realmente usaste Claude.":"API cost on the days you actually used Claude.",
+  "Output por €":"Output per €", "ahorro caché":"cache savings", "del coste bruto":"of gross cost",
+  "Tokens de salida generados por cada euro de coste API.":"Output tokens generated per euro of API cost.",
+  /* --- mes en curso --- */
+  "Gastado este mes":"Spent this month", "día":"day", "de":"of",
+  "Media diaria":"Daily average", "sobre los":"over the", "días corridos":"elapsed days",
+  "Proyección fin de mes":"End-of-month projection", "si sigue este ritmo":"if this pace continues",
+  /* --- suscripción --- */
+  "API (uso real)":"API (actual usage)", "tu plan":"your plan",
+  "Opción":"Option", "vs API":"vs API", "Coste":"Cost", "/mes":"/mo", "en":"in",
+  "plan ahorra ":"plan saves ", "API ahorra ":"API saves ",
+  "A tarifas de API pagarías":"At API rates you'd pay",
+  "mes(es). Eso es menos que cualquier plan de suscripción en ese periodo, así que":"month(s). That's less than any subscription plan over that period, so",
+  "el pago por uso sale a cuenta":"pay-per-use is the better deal",
+  "La suscripción":"The subscription",
+  "mes/es) es la opción más barata frente a pagar la API (":"month(s)) is the cheapest option versus paying the API (",
+  "Tu plan actual (":"Your current plan (",
+  "A tarifas API habrías pagado":"At API rates you'd have paid",
+  ": lo amortizas con creces (":": you more than recoup it (",
+  " de valor por encima de la cuota).":" of value above the fee).",
+  "La API te habría salido":"The API would have cost you",
+  "más barata que tu plan.":"cheaper than your plan.",
+  "Ojo: alcanzaste el límite de sesión":"Heads up: you hit the session limit",
+  "veces — la opción más barata por precio puede no tener bastante margen de uso; un plan superior daría más holgura aunque cueste más.":"times — the cheapest option by price may not have enough usage headroom; a higher plan would give more slack even if it costs more.",
+  "Nota: el coste API es el contrafactual \"si hubieras pagado por token\". La suscripción es tarifa plana con límites de uso. Comparado sobre los":"Note: API cost is the counterfactual \"if you had paid per token\". The subscription is flat-rate with usage limits. Compared over the",
+  "mes(es) con actividad. Importes en € (tasa":"month(s) with activity. Amounts in € (rate",
+  /* --- categorías de actividad --- */
+  "Programación":"Programming", "Depuración":"Debugging", "Refactorización":"Refactoring",
+  "Pruebas":"Testing", "Documentación":"Documentation", "Exploración":"Exploration",
+  "Investigación":"Research", "Orquestación":"Orchestration",
+  "Configuración/DevOps":"Config/DevOps", "Scripting/Shell":"Scripting/Shell", "Otro":"Other",
+  /* --- outcomes --- */
+  "Resultado de las sesiones (de":"Session outcomes (of",
+  "con datos de facets):":"with facets data):",
+  "logrado":"achieved", "parcial":"partial", "fallido":"failed",
+  "Logrado":"Achieved", "Parcial":"Partial", "Fallido":"Failed", "Sin dato":"No data",
+  /* --- archivos / herramientas / shell --- */
+  "Archivo":"File", "Lect.":"Read", "Edic.":"Edit", "Escr.":"Write", "Ses.":"Sess.",
+  "Máx relec.":"Max re-read",
+  "Máximo de lecturas del mismo archivo en una sola sesión":"Maximum reads of the same file in a single session",
+  "Sin datos de ficheros.":"No file data.",
+  "Sin uso de herramientas detectado.":"No tool usage detected.",
+  "Sin comandos de shell detectados.":"No shell commands detected.",
+  "Relecturas intensas":"Heavy re-reads",
+  "Mismo archivo leído muchas veces dentro de una sola sesión. Con prompt caching el coste se mitiga, pero suele indicar que conviene mantenerlo en contexto o dividirlo en piezas más pequeñas.":"Same file read many times within a single session. Prompt caching softens the cost, but it usually means you should keep it in context or split it into smaller pieces.",
+  "hasta":"up to", "en una sesión":"in one session", "lecturas en total":"reads in total",
+  "Sin datos de actividad.":"No activity data.",
+  /* --- rightsizing --- */
+  "Ahorro potencial":"Potential savings", "del gasto total":"of total spend",
+  "Sesiones candidatas":"Candidate sessions", "ligeras corridas en premium":"light ones running on premium",
+  "→ a Haiku 4.5":"→ to Haiku 4.5", "tareas muy ligeras":"very light tasks",
+  "→ a Sonnet 4.6":"→ to Sonnet 4.6", "complejidad media":"medium complexity",
+  "Guía rápida: qué modelo para qué":"Quick guide: which model for what",
+  "(tarifas USD/1M tok)":"(rates USD/1M tok)",
+  "Lecturas, ediciones puntuales, clasificación, formato, extracción simple, subagentes de búsqueda.":"Reads, one-off edits, classification, formatting, simple extraction, search subagents.",
+  "Refactors, resúmenes, tareas de volumen, complejidad media.":"Refactors, summaries, bulk tasks, medium complexity.",
+  "Trabajo agéntico largo, depuración difícil, diseño/arquitectura.":"Long agentic work, hard debugging, design/architecture.",
+  "Máxima capacidad — solo cuando Opus se queda corto.":"Maximum capability — only when Opus falls short.",
+  "Qué cambiar":"What to change",
+  "Inicio":"Start", "Proyecto":"Project", "Modelo actual":"Current model", "Sugerido":"Suggested",
+  "Coste est.":"Est. cost", "Ahorro":"Savings", "Tarea":"Task",
+  "Estimación heurística. Criterio: ":"Heuristic estimate. Criterion: ",
+  /* --- ajuste por actividad --- */
+  "Ahorro por actividad":"Savings by activity",
+  "Categorías con margen":"Categories with margin", "tipos de tarea mal asignados":"task types misassigned",
+  "vs rightsizing por longitud":"vs length-based rightsizing", "lo que ve el criterio antiguo":"what the old criterion sees",
+  "El método por longitud solo ve sesiones cortas; este ve también las largas pero mecánicas.":"The length method only sees short sessions; this one also catches long but mechanical ones.",
+  "Qué reasignar":"What to reassign",
+  "Tipo de actividad":"Activity type", "Coste actual":"Current cost", "Modelo sugerido":"Suggested model",
+  "Criterio: ":"Criterion: ",
+  " El mapa categoría→modelo es editable en analizar.py (TECHO_ACTIVIDAD).":" The category→model map is editable in analizar.py (TECHO_ACTIVIDAD).",
+  /* --- auto-mejora --- */
+  "Primera ejecución: no hay con qué comparar todavía. La próxima vez verás los deltas.":"First run: nothing to compare against yet. Next time you'll see the deltas.",
+  "coste por ejecución (":"cost per run (", "registradas)":"recorded)",
+  "nuevos":"new", "cambiados":"changed",
+  /* --- memoria --- */
+  "Se guarda en":"Stored in",
+  "y se refina cada ejecución (nunca se escribe en ~/.claude).":"and refined on every run (never written to ~/.claude).",
+  "Proyecto top":"Top project", "Modelo dominante":"Dominant model", "Hora pico":"Peak hour",
+  "Ratio caché":"Cache ratio", "Proyectos vistos":"Projects seen", "Modelos vistos":"Models seen",
+  "Memoria de Claude Code":"Claude Code memory",
+  "Directorios memory/":"memory/ directories", "Entradas":"Entries", "vacía":"empty",
+  "Modelos sin tarifa (añádelos a precios.json):":"Models without rates (add them to precios.json):",
+  "No se detectaron invocaciones de skills.":"No skill invocations detected.",
+  "Sin datos de cliente (campo entrypoint no presente en los transcripts).":"No client data (entrypoint field not present in transcripts).",
+  "Origen de cada llamada según el campo <code>entrypoint</code> del transcript. Las sesiones de Cowork (nube) no dejan transcript local, así que no aparecen.":"Origin of each call according to the <code>entrypoint</code> field in the transcript. Cowork (cloud) sessions don't leave a local transcript, so they don't appear.",
+  "llam":"calls",
+  "ses":"sess",
+  /* --- productividad --- */
+  "Sin datos de git en los transcripts. Se obtienen de":"No git data in the transcripts. Obtained from",
+  "cuando Claude Code los registra.":"when Claude Code records them.",
+  "líneas":"lines", "Líneas añadidas":"Lines added", "Líneas eliminadas":"Lines removed",
+  "Commits (etiqueta)":"Commits (label)",
+  "Sin datos de outcome. Se obtienen de":"No outcome data. Obtained from",
+  "Sin datos de lenguajes.":"No language data.", "lenguajes":"languages",
+  "Interactivo":"Interactive", "Orquestado":"Orchestrated", "Subagente":"Subagent",
+  "Multi-tarea":"Multi-task", "Refinamiento iterativo":"Iterative refinement", "Tarea única":"Single task",
+  "Desconocido":"Unknown",
+  "Sin datos de tipo de sesión.":"No session type data.",
+  "0–5 min":"0–5 min", "5–15 min":"5–15 min", "15–30 min":"15–30 min", "30–60 min":"30–60 min", ">60 min":">60 min",
+  "Sin datos de duración disponibles.":"No duration data available.",
+  "Completadas":"Completed", "En curso":"In progress", "Archivadas":"Archived",
+  "Sin tasks en":"No tasks in",
+  /* --- sesiones (tabla) --- */
+  "Todos los proyectos":"All projects", "Todos los tipos":"All types",
+  "Tipo":"Type", "Llam.":"Calls", "Dur(min)":"Dur(min)", "Tools":"Tools", "Lang":"Lang",
+  "Git":"Git", "Prompt / objetivo":"Prompt / goal",
+  "Fin":"End", "Coste USD":"Cost USD", "Duracion_min":"Duration_min", "Objetivo/Prompt":"Goal/Prompt",
+  /* --- caché / límites --- */
+  "Tokens leídos de caché":"Tokens read from cache", "coste":"cost",
+  "Tokens escritos en caché":"Tokens written to cache",
+  "Ratio de lectura":"Read ratio", "de la entrada total":"of total input",
+  "Ahorro estimado":"Estimated savings",
+  "La lectura de caché cuesta 0,1× la tarifa de entrada; sin caché esos":"Cache reads cost 0.1× the input rate; without cache those",
+  "tokens se pagarían a precio pleno. De ahí el ahorro estimado.":"tokens would be paid at full price. Hence the estimated savings.",
+  "Límites de uso/sesión":"Usage/session limits", "veces":"times",
+  "Errores de API (total)":"API errors (total)", "Por categoría":"By category",
+  "Menciones en contenido":"Content mentions", "orientativo":"approximate",
+  "Sin eventos de límite de alta confianza. 🎉":"No high-confidence limit events. 🎉",
+  "eventos":"events", "Cuándo":"When",
+  /* --- footer --- */
+  "Tarifas usadas (USD por 1M tokens,":"Rates used (USD per 1M tokens,",
+  "Caché: lectura 0,1× · escritura 5m 1,25× · escritura 1h 2,0× la tarifa de entrada.":"Cache: read 0.1× · write 5m 1.25× · write 1h 2.0× the input rate.",
+  "Web search":"Web search",
+  "Fechas/horas en zona local. Coste = contrafactual a tarifas API.":"Dates/times in local zone. Cost = counterfactual at API rates.",
+  "Importes mostrados en € a":"Amounts shown in € at",
+  "€/$ (las tarifas API son en USD).":"€/$ (API rates are in USD).",
+  "Fuente de tarifas:":"Rate source:",
+  "Datos crudos en":"Raw data in", "estado de auto-mejora en":"self-improvement state in",
+  "Este panel solo LEE ~/.claude; nunca escribe ahí.":"This panel only READS ~/.claude; it never writes there."
+}};
+function _t(k){ if(LANG==="es") return k; const v=TR.en[k]; return v!=null?v:k; }
+/* traduce el HTML estático marcado con data-i18n* (clave = atributo o texto/atributo actual) */
+function applyHtmlI18n(){
+  document.title=_t("Panel de costes · Claude Code");
+  if(LANG==="es") return;
+  document.querySelectorAll("[data-i18n]").forEach(e=>{
+    const k=e.getAttribute("data-i18n")||e.textContent.trim(); const v=TR.en[k]; if(v!=null) e.textContent=v; });
+  document.querySelectorAll("[data-i18n-title]").forEach(e=>{
+    const k=e.getAttribute("data-i18n-title")||e.getAttribute("title"); const v=TR.en[k]; if(v!=null) e.title=v; });
+  document.querySelectorAll("[data-i18n-ph]").forEach(e=>{
+    const k=e.getAttribute("data-i18n-ph")||e.getAttribute("placeholder"); const v=TR.en[k]; if(v!=null) e.placeholder=v; });
+  document.querySelectorAll("[data-i18n-aria]").forEach(e=>{
+    const k=e.getAttribute("data-i18n-aria")||e.getAttribute("aria-label"); const v=TR.en[k]; if(v!=null) e.setAttribute("aria-label",v); });
+}
+applyHtmlI18n();
+/* selector de idioma (en cabecera) */
+(function(){ const b=document.getElementById("btn_lang"); if(!b) return;
+  b.textContent=LANG==="en"?"ES":"EN";
+  b.title=LANG==="en"?"Cambiar a español":"Switch to English";
+  b.onclick=()=>{ try{ localStorage.setItem("panel_lang",LANG==="en"?"es":"en"); }catch(e){} location.reload(); };
+})();
+
 const COL = {}; D.by_model.forEach(m=>COL[m.modelo]=m.color);
 const ELAB = {}; D.by_model.forEach(m=>ELAB[m.modelo]=m.etiqueta);
 const CATCOL = {"Programación":"#3b82f6","Depuración":"#ef4444","Refactorización":"#a855f7",
@@ -433,14 +736,14 @@ function catTag(c){ if(!c) return ""; const k=CATCOL[c]||"#5d6b88";
 const TASA=(PAYLOAD.precios&&PAYLOAD.precios.eur_por_usd)||1;   // USD -> EUR (solo display)
 function money(v){ v=(v||0)*TASA; if(!v) return "0 €"; const a=Math.abs(v);
   if(a<0.01) return v.toFixed(4)+" €";
-  return v.toLocaleString("es-ES",{minimumFractionDigits:2,maximumFractionDigits:2})+" €"; }
+  return v.toLocaleString(LOCALE,{minimumFractionDigits:2,maximumFractionDigits:2})+" €"; }
 function eur0(v){ return Math.round((v||0)*TASA)+" €"; }          // etiqueta compacta de barra
 function eurize(s){ return (s==null?"":(""+s)).replace(/\$(\d+(?:\.\d+)?)/g,(m,n)=>money(parseFloat(n))); }
 function toks(v){ v=v||0; if(v>=1e6) return (v/1e6).toFixed(2)+"M"; if(v>=1e3) return (v/1e3).toFixed(1)+"k"; return ""+v; }
 function pct(v){ return (v||0).toFixed(1)+"%"; }
 function esc(s){ return (s==null?"":(""+s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function el(id){ return document.getElementById(id); }
-const DIAS=["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
+const DIAS=LANG==="en"?["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]:["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"];
 
 /* ===================== RANGO TEMPORAL (global) =====================
    Un selector compartido (clase .rango-sel) filtra las series temporales de gasto y
@@ -457,17 +760,17 @@ function rangoCutoff(){
 function enRangoDia(dia){ const c=rangoCutoff(); if(!c||!dia) return true;
   return c.mes ? dia.slice(0,7)===c.mes : dia>=c.desde; }
 function filtraByDay(bd){ return (bd||[]).filter(d=>enRangoDia(d.dia)); }
-const RANGO_LAB={todo:"todo el histórico","7":"últimos 7 días","30":"últimos 30 días","90":"últimos 90 días",mes:"este mes"};
+const RANGO_LAB={todo:_t("todo el histórico"),"7":_t("últimos 7 días"),"30":_t("últimos 30 días"),"90":_t("últimos 90 días"),mes:_t("este mes")};
 function resumenPeriodo(bd){
   const coste=bd.reduce((a,d)=>a+d.coste,0);
   const tk=bd.reduce((a,d)=>a+d.input+d.output+d.cache_read+d.cache_write,0);
   const reqs=bd.reduce((a,d)=>a+d.requests,0);
   const ses=D.sesiones.filter(s=>s.inicio&&enRangoDia(s.inicio.slice(0,10))).length;
   const pctG=D.totales.coste?100*coste/D.totales.coste:0;
-  const span=RANGO==="todo"?"":` <span class="mut">(${bd.length} días)</span>`;
-  return `<b>Periodo:</b> ${esc(RANGO_LAB[RANGO]||RANGO)}${span} · <b>${money(coste)}</b> `+
-    `<span class="mut">(${pctG.toFixed(0)}% del total)</span> · ${toks(tk)} tokens · `+
-    `${reqs.toLocaleString()} llamadas · ${ses} sesiones`;
+  const span=RANGO==="todo"?"":` <span class="mut">(${bd.length} ${_t("días")})</span>`;
+  return `<b>${_t("Periodo:")}</b> ${esc(RANGO_LAB[RANGO]||RANGO)}${span} · <b>${money(coste)}</b> `+
+    `<span class="mut">(${pctG.toFixed(0)}% ${_t("del total")})</span> · ${toks(tk)} ${_t("tokens")} · `+
+    `${reqs.toLocaleString(LOCALE)} ${_t("llamadas")} · ${ses} ${_t("sesiones")}`;
 }
 function setRango(v){ RANGO=v;
   document.querySelectorAll(".rango-sel").forEach(s=>{ if(s.value!==v) s.value=v; });
@@ -577,21 +880,21 @@ function agrupar(byday, gran){
 
 /* ===================== KPIs + TAB BADGES ===================== */
 (function(){
-  el("hdrsub").textContent="Generado "+D.generado+" · "+D.totales.transcripts+" transcripts · "+D.claude_dir;
+  el("hdrsub").textContent=_t("Generado")+" "+D.generado+" · "+D.totales.transcripts+" "+_t("transcripts")+" · "+D.claude_dir;
   const b=el("badges");
-  b.innerHTML=`<span class="badge ro">● SOLO LECTURA sobre ~/.claude</span>`+
-    `<span class="badge">Tarifas API ${esc(D.precios_meta.vigente_desde||"")}</span>`;
+  b.innerHTML=`<span class="badge ro">${_t("● SOLO LECTURA sobre ~/.claude")}</span>`+
+    `<span class="badge">${_t("Tarifas API")} ${esc(D.precios_meta.vigente_desde||"")}</span>`;
   const T=D.totales, sub=D.subscripcion;
   const kpis=[
-    {lab:"Coste total (API)",val:money(T.coste),sub:`${T.requests.toLocaleString()} llamadas`},
-    {lab:"Tokens totales",val:toks(T.tokens_total),sub:`in ${toks(T.input)} · out ${toks(T.output)}`},
-    {lab:"Tokens de caché",val:toks(T.cache_read+T.cache_write),sub:`lectura ${toks(T.cache_read)} · escritura ${toks(T.cache_write)}`},
-    {lab:"Sesiones",val:T.sesiones,sub:`${T.proyectos} proyectos · ${T.dias} días`},
-    {lab:"Límites de uso",val:D.limites.limite_uso,cls:D.limites.limite_uso?"danger":"ok",
-       sub:`${D.limites.alta_confianza} errores API en total`},
-    {lab:"Ahorro por caché",val:money(D.cache.ahorro_estimado),cls:"ok",sub:`ratio lectura ${pct(D.cache.ratio_lectura)}`},
-    {lab:"Mejor opción",val:sub.mejor_opcion.nombre.replace(" (pago por uso)",""),
-       sub:`${money(sub.mejor_opcion.coste)} / ${sub.n_meses} mes(es)`},
+    {lab:_t("Coste total (API)"),val:money(T.coste),sub:`${T.requests.toLocaleString(LOCALE)} ${_t("llamadas")}`},
+    {lab:_t("Tokens totales"),val:toks(T.tokens_total),sub:`in ${toks(T.input)} · out ${toks(T.output)}`},
+    {lab:_t("Tokens de caché"),val:toks(T.cache_read+T.cache_write),sub:`${_t("lectura")} ${toks(T.cache_read)} · ${_t("escritura")} ${toks(T.cache_write)}`},
+    {lab:_t("Sesiones"),val:T.sesiones,sub:`${T.proyectos} ${_t("proyectos")} · ${T.dias} ${_t("días")}`},
+    {lab:_t("Límites de uso"),val:D.limites.limite_uso,cls:D.limites.limite_uso?"danger":"ok",
+       sub:`${D.limites.alta_confianza} ${_t("errores API en total")}`},
+    {lab:_t("Ahorro por caché"),val:money(D.cache.ahorro_estimado),cls:"ok",sub:`${_t("ratio lectura")} ${pct(D.cache.ratio_lectura)}`},
+    {lab:_t("Mejor opción"),val:sub.mejor_opcion.nombre.replace(" (pago por uso)",""),
+       sub:`${money(sub.mejor_opcion.coste)} / ${sub.n_meses} ${_t("mes(es)")}`},
   ];
   el("kpis").innerHTML=kpis.map(k=>`<div class="card kpi"><div class="lab">${k.lab}</div>
     <div class="val ${k.cls||""}">${k.val}</div><div class="sub">${k.sub||""}</div></div>`).join("");
@@ -602,10 +905,10 @@ function agrupar(byday, gran){
   const rs=D.rightsizing||{}, aj=D.ajuste_actividad||{};
   const ahorroMax=Math.max(rs.ahorro_total||0, aj.ahorro_total||0);
   const recBadge=el("tb-recomendaciones");
-  if(ahorroMax>0){ recBadge.textContent=money(ahorroMax)+" ahorro"; recBadge.classList.add("ok"); }
-  else if(D.limites.alta_confianza>0){ recBadge.textContent=D.limites.alta_confianza+" lím."; recBadge.classList.add("warn"); }
-  else { recBadge.textContent="sin errores"; recBadge.classList.add("ok"); }
-  el("tb-sesiones").textContent=T.sesiones+" ses";
+  if(ahorroMax>0){ recBadge.textContent=money(ahorroMax)+" "+_t("ahorro"); recBadge.classList.add("ok"); }
+  else if(D.limites.alta_confianza>0){ recBadge.textContent=D.limites.alta_confianza+" "+_t("lím."); recBadge.classList.add("warn"); }
+  else { recBadge.textContent=_t("sin errores"); recBadge.classList.add("ok"); }
+  el("tb-sesiones").textContent=T.sesiones+" "+_t("ses");
   const totalCommits=D.sesiones.reduce((a,s)=>a+(s.git_commits||0),0);
   const prodBadge=el("tb-productividad");
   if(totalCommits>0){ prodBadge.textContent=totalCommits+"c"; }
@@ -620,12 +923,12 @@ function agrupar(byday, gran){
 (function(){
   const SAT_REQDIA=250;            // llamadas/día a las que la intensidad satura a 1
   const NIVELES=[                  // de más a menos; primero cuyo min<=score gana
-    {min:80, emoji:"🚨", name:"Adicto perdido a Claude", color:"#ff6b6b", quip:"Esto ya no es uso, es una relación."},
-    {min:55, emoji:"🔥", name:"Enganchado",              color:"#f59e0b", quip:"Lo abres más que el WhatsApp."},
-    {min:30, emoji:"⚡", name:"Uso moderado",            color:"#6ea8fe", quip:"Uso con cabeza, sin pasarte."},
-    {min:0,  emoji:"🌱", name:"Uso ocasional",           color:"#86efac", quip:"De vez en cuando, a ratos."},
+    {min:80, emoji:"🚨", name:_t("Adicto perdido a Claude"), color:"#ff6b6b", quip:_t("Esto ya no es uso, es una relación.")},
+    {min:55, emoji:"🔥", name:_t("Enganchado"),              color:"#f59e0b", quip:_t("Lo abres más que el WhatsApp.")},
+    {min:30, emoji:"⚡", name:_t("Uso moderado"),            color:"#6ea8fe", quip:_t("Uso con cabeza, sin pasarte.")},
+    {min:0,  emoji:"🌱", name:_t("Uso ocasional"),           color:"#86efac", quip:_t("De vez en cuando, a ratos.")},
   ];
-  const DESENGANCHADO={emoji:"🛌", name:"Desenganchado", color:"#8b95a7", quip:"Claude te echa de menos."};
+  const DESENGANCHADO={emoji:"🛌", name:_t("Desenganchado"), color:"#8b95a7", quip:_t("Claude te echa de menos.")};
   function diasVentana(){
     if(RANGO==="mes")  return Math.max(1,_hoy().getDate());
     if(RANGO!=="todo") return parseInt(RANGO,10);
@@ -643,18 +946,18 @@ function agrupar(byday, gran){
     box.innerHTML=
       `<div class="ico">${lv.emoji}</div>`+
       `<div class="body">`+
-        `<div class="lab">Nivel de uso · ${esc(RANGO_LAB[RANGO]||RANGO)}</div>`+
+        `<div class="lab">${_t("Nivel de uso")} · ${esc(RANGO_LAB[RANGO]||RANGO)}</div>`+
         `<div class="name" style="color:${lv.color}">${esc(lv.name)}</div>`+
-        `<div class="sub">${da}/${dv} días activos · ${Math.round(reqDia).toLocaleString()} llamadas/día · `+
-          `${req.toLocaleString()} llamadas · ${money(cost)}</div>`+
+        `<div class="sub">${da}/${dv} ${_t("días activos")} · ${Math.round(reqDia).toLocaleString(LOCALE)} ${_t("llamadas/día")} · `+
+          `${req.toLocaleString(LOCALE)} ${_t("llamadas")} · ${money(cost)}</div>`+
         `<div class="gauge"><i style="width:${Math.max(2,score)}%;background:${lv.color}"></i></div>`+
         `<div class="quip">${esc(lv.quip)}</div>`+
       `</div>`+
       `<div class="ctrl">`+
-        `<select class="gran-sel rango-sel" aria-label="Rango del nivel de uso">`+
-          `<option value="todo">Todo</option><option value="7">Últ. 7 días</option>`+
-          `<option value="30">Últ. 30 días</option><option value="90">Últ. 90 días</option>`+
-          `<option value="mes">Este mes</option></select>`+
+        `<select class="gran-sel rango-sel" aria-label="${_t("Rango del nivel de uso")}">`+
+          `<option value="todo">${_t("Todo")}</option><option value="7">${_t("Últ. 7 días")}</option>`+
+          `<option value="30">${_t("Últ. 30 días")}</option><option value="90">${_t("Últ. 90 días")}</option>`+
+          `<option value="mes">${_t("Este mes")}</option></select>`+
         `<div class="score" style="color:${lv.color}">${score}<small>/100</small></div>`+
       `</div>`;
     const s=box.querySelector(".rango-sel");          // re-sincroniza y re-cablea el selector recién inyectado
@@ -684,7 +987,7 @@ function agrupar(byday, gran){
     bd.forEach(d=>Object.entries(d.modelos||{}).forEach(([m,v])=>agg[m]=(agg[m]||0)+v));
     const tot=Object.values(agg).reduce((a,b)=>a+b,0);
     const items=D.by_model.filter(m=>(agg[m.modelo]||0)>0).map(m=>({label:m.etiqueta,value:agg[m.modelo],color:m.color}));
-    el("donut_model").innerHTML=donut(items,{big:money(tot),small:RANGO==="todo"?"coste total":"coste periodo"});
+    el("donut_model").innerHTML=donut(items,{big:money(tot),small:RANGO==="todo"?_t("coste total"):_t("coste periodo")});
     el("legend_model").innerHTML=D.by_model.map(m=>{const c=agg[m.modelo]||0,sh=tot?100*c/tot:0;
       return `<span class="it"><span class="sw" style="background:${m.color}"></span>${m.etiqueta} · ${money(c)} (${sh.toFixed(1)}%)</span>`;}).join("");
   }
@@ -693,7 +996,7 @@ function agrupar(byday, gran){
 
 (function(){ /* hora del día */
   const rows=(D.by_hour||[]).map(h=>({label:String(h.hora).padStart(2,"0"),vals:{c:h.coste}}));
-  el("chart_hour").innerHTML=`<div class="section-note" style="margin-top:0">Suma de todos los días · por hora (local)</div>`+
+  el("chart_hour").innerHTML=`<div class="section-note" style="margin-top:0">${_t("Suma de todos los días · por hora (local)")}</div>`+
     stacked(rows,[{key:"c",color:"#6ea8fe",label:"Coste"}],{h:250,bw:17,gap:4,fmt:money,lab:v=>v>=10?eur0(v):""});
 })();
 
@@ -830,34 +1133,44 @@ function agrupar(byday, gran){
 
 (function(){ /* tipos de actividad (donut) + resultados */
   const cats=D.by_categoria||[];
-  if(!cats.length){ el("donut_cat").innerHTML=`<p class="mut">Sin datos de actividad.</p>`; }
+  if(!cats.length){ el("donut_cat").innerHTML=`<p class="mut">${_t("Sin datos de actividad.")}</p>`; }
   else{
     const tot=cats.reduce((s,c)=>s+c.coste,0);
     const items=cats.map(c=>({label:c.categoria,value:c.coste,color:CATCOL[c.categoria]||"#5d6b88"}));
-    el("donut_cat").innerHTML=donut(items,{big:money(tot),small:"coste por tipo"});
+    el("donut_cat").innerHTML=donut(items,{big:money(tot),small:_t("coste por tipo")});
     el("legend_cat").innerHTML=cats.map(c=>`<span class="it"><span class="sw" style="background:${CATCOL[c.categoria]||"#5d6b88"}"></span>${esc(c.categoria)} · ${money(c.coste)} <span class="mut">(${c.sesiones} ses)</span></span>`).join("");
   }
   const O=D.outcomes||{}, cd=O.con_dato||0, cc=O.conteo||{};
   if(cd>0){
     const p=k=>(100*(cc[k]||0)/cd).toFixed(0);
-    el("cat_outcomes").innerHTML=`<span class="mut small">Resultado de las sesiones (de ${cd} con datos de facets): </span>`+
-      `<span class="tag ok">${p("logrado")}% logrado</span> `+
-      (cc.parcial?`<span class="tag warn">${p("parcial")}% parcial</span> `:"")+
-      (cc.fallido?`<span class="tag bad">${p("fallido")}% fallido</span>`:"");
+    el("cat_outcomes").innerHTML=`<span class="mut small">${_t("Resultado de las sesiones (de")} ${cd} ${_t("con datos de facets):")} </span>`+
+      `<span class="tag ok">${p("logrado")}% ${_t("logrado")}</span> `+
+      (cc.parcial?`<span class="tag warn">${p("parcial")}% ${_t("parcial")}</span> `:"")+
+      (cc.fallido?`<span class="tag bad">${p("fallido")}% ${_t("fallido")}</span>`:"");
   }
 })();
 
 (function(){ /* herramientas más usadas */
   const H=D.herramientas||[];
-  if(!H.length){ el("tools_box").innerHTML=`<p class="mut">Sin uso de herramientas detectado.</p>`; return; }
+  if(!H.length){ el("tools_box").innerHTML=`<p class="mut">${_t("Sin uso de herramientas detectado.")}</p>`; return; }
   const items=H.slice(0,12).map(t=>({label:t.nombre,value:t.veces,color:"#6ea8fe",sub:`${t.sesiones} ses`}));
   el("tools_box").innerHTML=hbars(items,v=>v.toLocaleString()+"×");
 })();
 
+(function(){ /* uso por cliente (entrypoint) */
+  const C=D.by_cliente||[];
+  if(!C.length){ el("cliente_box").innerHTML=`<p class="mut">${_t("Sin datos de cliente (campo entrypoint no presente en los transcripts).")}</p>`; return; }
+  const col=c=>c==="claude-vscode"?"#3b82f6":(c==="claude-desktop"?"#f59e0b":(c==="sdk"?"#a855f7":"#64748b"));
+  const items=C.map(c=>({label:c.etiqueta,value:c.coste,color:col(c.cliente),
+    sub:`${c.requests.toLocaleString(LOCALE)} ${_t("llam")} · ${c.sesiones} ${_t("ses")} · ${c.share}%`}));
+  el("cliente_box").innerHTML=hbars(items,money)+
+    `<p class="section-note" style="margin-top:10px">${_t("Origen de cada llamada según el campo <code>entrypoint</code> del transcript. Las sesiones de Cowork (nube) no dejan transcript local, así que no aparecen.")}</p>`;
+})();
+
 (function(){ /* archivos más tocados */
   const A=D.archivos||[];
-  if(!A.length){ el("tbl_archivos").innerHTML=`<tbody><tr><td class="mut" style="padding:14px">Sin datos de ficheros.</td></tr></tbody>`; return; }
-  let h=`<thead><tr><th>Archivo</th><th>Lect.</th><th>Edic.</th><th>Escr.</th><th>Ses.</th><th title="Máximo de lecturas del mismo archivo en una sola sesión">Máx relec.</th></tr></thead><tbody>`;
+  if(!A.length){ el("tbl_archivos").innerHTML=`<tbody><tr><td class="mut" style="padding:14px">${_t("Sin datos de ficheros.")}</td></tr></tbody>`; return; }
+  let h=`<thead><tr><th>${_t("Archivo")}</th><th>${_t("Lect.")}</th><th>${_t("Edic.")}</th><th>${_t("Escr.")}</th><th>${_t("Ses.")}</th><th title="${_t("Máximo de lecturas del mismo archivo en una sola sesión")}">${_t("Máx relec.")}</th></tr></thead><tbody>`;
   A.forEach(f=>{ const hot=f.max_relec>=10; const nm=f.archivo.length>32?f.archivo.slice(0,31)+"…":f.archivo;
     h+=`<tr><td style="text-align:left" title="${esc(f.archivo)}">${esc(nm)}</td>
       <td>${f.read||""}</td><td>${f.edit||""}</td><td>${f.write||""}</td><td>${f.sesiones}</td>
@@ -868,13 +1181,13 @@ function agrupar(byday, gran){
 (function(){ /* comandos de shell + relecturas intensas */
   const B=D.bash_top||[];
   el("bash_box").innerHTML=B.length
-    ?hbars(B.map(b=>({label:b.cmd,value:b.veces,color:"#64748b"})),v=>v.toLocaleString()+"×")
-    :`<p class="mut">Sin comandos de shell detectados.</p>`;
+    ?hbars(B.map(b=>({label:b.cmd,value:b.veces,color:"#64748b"})),v=>v.toLocaleString(LOCALE)+"×")
+    :`<p class="mut">${_t("Sin comandos de shell detectados.")}</p>`;
   const R=D.relecturas||[];
   if(R.length){
-    el("relec_box").innerHTML=`<b style="font-size:12.5px;color:#cdd6e8">Relecturas intensas</b>
-      <p class="section-note" style="margin:4px 0 7px">Mismo archivo leído muchas veces dentro de una sola sesión. Con prompt caching el coste se mitiga, pero suele indicar que conviene mantenerlo en contexto o dividirlo en piezas más pequeñas.</p>
-      <ul class="reclist" style="margin-top:4px">${R.slice(0,6).map(f=>`<li><b>${esc(f.archivo)}</b> — hasta <b style="color:#fca5a5">${f.max_relec}×</b> en una sesión <span class="mut">(${f.read} lecturas en total)</span></li>`).join("")}</ul>`;
+    el("relec_box").innerHTML=`<b style="font-size:12.5px;color:#cdd6e8">${_t("Relecturas intensas")}</b>
+      <p class="section-note" style="margin:4px 0 7px">${_t("Mismo archivo leído muchas veces dentro de una sola sesión. Con prompt caching el coste se mitiga, pero suele indicar que conviene mantenerlo en contexto o dividirlo en piezas más pequeñas.")}</p>
+      <ul class="reclist" style="margin-top:4px">${R.slice(0,6).map(f=>`<li><b>${esc(f.archivo)}</b> — ${_t("hasta")} <b style="color:#fca5a5">${f.max_relec}×</b> ${_t("en una sesión")} <span class="mut">(${f.read} ${_t("lecturas en total")})</span></li>`).join("")}</ul>`;
   }
 })();
 
@@ -885,25 +1198,25 @@ function agrupar(byday, gran){
   const mb=s=>eurize(esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>"));
   const pctG=D.totales.coste?(100*(R.ahorro_total||0)/D.totales.coste):0;
   el("rs_kpis").innerHTML=[
-    {lab:"Ahorro potencial",val:money(R.ahorro_total||0),cls:R.ahorro_total>0?"ok":"",sub:pctG.toFixed(0)+"% del gasto total"},
-    {lab:"Sesiones candidatas",val:R.n||0,sub:"ligeras corridas en premium"},
-    {lab:"→ a Haiku 4.5",val:money(R.ahorro_haiku||0),sub:"tareas muy ligeras"},
-    {lab:"→ a Sonnet 4.6",val:money(R.ahorro_sonnet||0),sub:"complejidad media"},
+    {lab:_t("Ahorro potencial"),val:money(R.ahorro_total||0),cls:R.ahorro_total>0?"ok":"",sub:pctG.toFixed(0)+"% "+_t("del gasto total")},
+    {lab:_t("Sesiones candidatas"),val:R.n||0,sub:_t("ligeras corridas en premium")},
+    {lab:_t("→ a Haiku 4.5"),val:money(R.ahorro_haiku||0),sub:_t("tareas muy ligeras")},
+    {lab:_t("→ a Sonnet 4.6"),val:money(R.ahorro_sonnet||0),sub:_t("complejidad media")},
   ].map(k=>`<div class="card kpi"><div class="lab">${k.lab}</div><div class="val ${k.cls||""}">${k.val}</div><div class="sub">${k.sub}</div></div>`).join("");
 
-  el("rs_guide").innerHTML=`<b style="font-size:14px">Guía rápida: qué modelo para qué <span class="mut" style="font-weight:400;font-size:11px">(tarifas USD/1M tok)</span></b>
+  el("rs_guide").innerHTML=`<b style="font-size:14px">${_t("Guía rápida: qué modelo para qué")} <span class="mut" style="font-weight:400;font-size:11px">${_t("(tarifas USD/1M tok)")}</span></b>
     <div class="kv" style="margin-top:10px;grid-template-columns:auto 1fr;gap:9px 14px">
-      <span class="k"><span class="pill" style="background:#10b981"></span>Haiku 4.5 <span class="mut">$1/$5</span></span><span>Lecturas, ediciones puntuales, clasificación, formato, extracción simple, subagentes de búsqueda.</span>
-      <span class="k"><span class="pill" style="background:#3b82f6"></span>Sonnet 4.6 <span class="mut">$3/$15</span></span><span>Refactors, resúmenes, tareas de volumen, complejidad media.</span>
-      <span class="k"><span class="pill" style="background:#f59e0b"></span>Opus 4.8 <span class="mut">$5/$25</span></span><span>Trabajo agéntico largo, depuración difícil, diseño/arquitectura.</span>
-      <span class="k"><span class="pill" style="background:#a855f7"></span>Fable 5 <span class="mut">$10/$50</span></span><span>Máxima capacidad — solo cuando Opus se queda corto.</span>
+      <span class="k"><span class="pill" style="background:#10b981"></span>Haiku 4.5 <span class="mut">$1/$5</span></span><span>${_t("Lecturas, ediciones puntuales, clasificación, formato, extracción simple, subagentes de búsqueda.")}</span>
+      <span class="k"><span class="pill" style="background:#3b82f6"></span>Sonnet 4.6 <span class="mut">$3/$15</span></span><span>${_t("Refactors, resúmenes, tareas de volumen, complejidad media.")}</span>
+      <span class="k"><span class="pill" style="background:#f59e0b"></span>Opus 4.8 <span class="mut">$5/$25</span></span><span>${_t("Trabajo agéntico largo, depuración difícil, diseño/arquitectura.")}</span>
+      <span class="k"><span class="pill" style="background:#a855f7"></span>Fable 5 <span class="mut">$10/$50</span></span><span>${_t("Máxima capacidad — solo cuando Opus se queda corto.")}</span>
     </div>`;
 
-  el("rs_recs").innerHTML=`<b style="font-size:14px">Qué cambiar</b>
+  el("rs_recs").innerHTML=`<b style="font-size:14px">${_t("Qué cambiar")}</b>
     <ul class="reclist">${(R.recs||[]).map(r=>`<li>${mb(r)}</li>`).join("")}</ul>`;
 
   if((R.candidatas||[]).length){
-    let h=`<thead><tr><th>Inicio</th><th>Proyecto</th><th>Modelo actual</th><th>Coste</th><th>Sugerido</th><th>Coste est.</th><th>Ahorro</th><th>Tarea</th></tr></thead><tbody>`;
+    let h=`<thead><tr><th>${_t("Inicio")}</th><th>${_t("Proyecto")}</th><th>${_t("Modelo actual")}</th><th>${_t("Coste")}</th><th>${_t("Sugerido")}</th><th>${_t("Coste est.")}</th><th>${_t("Ahorro")}</th><th>${_t("Tarea")}</th></tr></thead><tbody>`;
     R.candidatas.forEach(c=>{ h+=`<tr>
       <td>${esc((c.inicio||"").slice(0,16).replace("T"," "))}</td>
       <td>${esc(c.proyecto||"")}</td>
@@ -916,7 +1229,7 @@ function agrupar(byday, gran){
     </tr>`; });
     el("rs_tbl").innerHTML=h+`</tbody>`;
   } else { el("rs_tblwrap").style.display="none"; }
-  el("rs_note").textContent="Estimación heurística. Criterio: "+(R.criterios||"");
+  el("rs_note").textContent=_t("Estimación heurística. Criterio: ")+(R.criterios||"");
 })();
 
 (function(){ /* ajuste por tipo de actividad */
@@ -924,20 +1237,20 @@ function agrupar(byday, gran){
   const mb=s=>eurize(esc(s).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>"));
   const pctG=D.totales.coste?(100*(A.ahorro_total||0)/D.totales.coste):0;
   el("aj_kpis").innerHTML=[
-    {lab:"Ahorro por actividad",val:money(A.ahorro_total||0),cls:A.ahorro_total>0?"ok":"",sub:pctG.toFixed(0)+"% del gasto total"},
-    {lab:"Categorías con margen",val:cats.length,sub:"tipos de tarea mal asignados"},
-    {lab:"vs rightsizing por longitud",val:money((D.rightsizing||{}).ahorro_total||0),
-       sub:"lo que ve el criterio antiguo",
-       tip:"El método por longitud solo ve sesiones cortas; este ve también las largas pero mecánicas."},
+    {lab:_t("Ahorro por actividad"),val:money(A.ahorro_total||0),cls:A.ahorro_total>0?"ok":"",sub:pctG.toFixed(0)+"% "+_t("del gasto total")},
+    {lab:_t("Categorías con margen"),val:cats.length,sub:_t("tipos de tarea mal asignados")},
+    {lab:_t("vs rightsizing por longitud"),val:money((D.rightsizing||{}).ahorro_total||0),
+       sub:_t("lo que ve el criterio antiguo"),
+       tip:_t("El método por longitud solo ve sesiones cortas; este ve también las largas pero mecánicas.")},
   ].map(k=>`<div class="card kpi" title="${esc(k.tip||'')}"><div class="lab">${k.lab}</div>
     <div class="val ${k.cls||""}">${k.val}</div><div class="sub">${k.sub}</div></div>`).join("");
 
-  el("aj_recs").innerHTML=`<b style="font-size:14px">Qué reasignar</b>
+  el("aj_recs").innerHTML=`<b style="font-size:14px">${_t("Qué reasignar")}</b>
     <ul class="reclist">${(A.recs||[]).map(r=>`<li>${mb(r)}</li>`).join("")}</ul>`;
 
   if(cats.length){
-    let h=`<thead><tr><th>Tipo de actividad</th><th>Sesiones</th><th>Modelo actual</th><th>Coste actual</th>
-      <th>Modelo sugerido</th><th>Coste est.</th><th>Ahorro</th></tr></thead><tbody>`;
+    let h=`<thead><tr><th>${_t("Tipo de actividad")}</th><th>${_t("Sesiones")}</th><th>${_t("Modelo actual")}</th><th>${_t("Coste actual")}</th>
+      <th>${_t("Modelo sugerido")}</th><th>${_t("Coste est.")}</th><th>${_t("Ahorro")}</th></tr></thead><tbody>`;
     cats.forEach(c=>{ h+=`<tr>
       <td style="text-align:left">${catTag(c.categoria)}</td>
       <td>${c.sesiones}</td>
@@ -949,7 +1262,7 @@ function agrupar(byday, gran){
     </tr>`; });
     el("aj_tbl").innerHTML=h+`</tbody>`;
   } else { el("aj_tblwrap").style.display="none"; }
-  el("aj_note").textContent="Criterio: "+(A.criterios||"")+" El mapa categoría→modelo es editable en analizar.py (TECHO_ACTIVIDAD).";
+  el("aj_note").textContent=_t("Criterio: ")+(A.criterios||"")+_t(" El mapa categoría→modelo es editable en analizar.py (TECHO_ACTIVIDAD).");
 })();
 
 (function(){ /* auto-mejora */
@@ -1003,7 +1316,7 @@ function agrupar(byday, gran){
 })();
 
 (function(){ /* skills */
-  if(!D.skills.length){ el("skills_box").innerHTML=`<p class="mut">No se detectaron invocaciones de skills.</p>`; return; }
+  if(!D.skills.length){ el("skills_box").innerHTML=`<p class="mut">${_t("No se detectaron invocaciones de skills.")}</p>`; return; }
   const items=D.skills.map(s=>({label:s.nombre,value:s.veces,color:"#a855f7",sub:`${s.sesiones} ses`}));
   el("skills_box").innerHTML=hbars(items,v=>v+"×");
 })();
@@ -1022,7 +1335,7 @@ function agrupar(byday, gran){
   });
   const dias=Object.keys(byDay).sort();
   if(!dias.length){
-    el("chart_git_day").innerHTML=`<p class="mut" style="padding:16px">Sin datos de git en los transcripts. Se obtienen de <code>usage-data/session-meta/</code> cuando Claude Code los registra.</p>`;
+    el("chart_git_day").innerHTML=`<p class="mut" style="padding:16px">${_t("Sin datos de git en los transcripts. Se obtienen de")} <code>usage-data/session-meta/</code> ${_t("cuando Claude Code los registra.")}</p>`;
     return;
   }
   const maxAll=Math.max(1,...dias.map(d=>Math.max(byDay[d].add,byDay[d].del)));
@@ -1043,9 +1356,9 @@ function agrupar(byday, gran){
   });
   g+=`</svg>`;
   const legend=`<div class="legend" style="margin-top:6px">
-    <span class="it"><span class="sw" style="background:#10b981"></span>Líneas añadidas</span>
-    <span class="it"><span class="sw" style="background:#ef4444"></span>Líneas eliminadas</span>
-    <span class="it" style="color:#f59e0b">● Commits (etiqueta)</span></div>`;
+    <span class="it"><span class="sw" style="background:#10b981"></span>${_t("Líneas añadidas")}</span>
+    <span class="it"><span class="sw" style="background:#ef4444"></span>${_t("Líneas eliminadas")}</span>
+    <span class="it" style="color:#f59e0b">● ${_t("Commits (etiqueta)")}</span></div>`;
   el("chart_git_day").innerHTML=g+legend;
 })();
 
@@ -1064,11 +1377,11 @@ function agrupar(byday, gran){
   });
   const semanas=Object.keys(byWeek).sort();
   if(!semanas.length){
-    el("chart_outcomes_week").innerHTML=`<p class="mut" style="padding:16px">Sin datos de outcome. Se obtienen de <code>usage-data/facets/</code> cuando Claude Code los registra.</p>`;
+    el("chart_outcomes_week").innerHTML=`<p class="mut" style="padding:16px">${_t("Sin datos de outcome. Se obtienen de")} <code>usage-data/facets/</code> ${_t("cuando Claude Code los registra.")}</p>`;
     return;
   }
-  const series=[{key:"logrado",color:"#22c55e",label:"Logrado"},{key:"parcial",color:"#f59e0b",label:"Parcial"},
-    {key:"fallido",color:"#ef4444",label:"Fallido"},{key:"otro",color:"#5d6b88",label:"Sin dato"}];
+  const series=[{key:"logrado",color:"#22c55e",label:_t("Logrado")},{key:"parcial",color:"#f59e0b",label:_t("Parcial")},
+    {key:"fallido",color:"#ef4444",label:_t("Fallido")},{key:"otro",color:"#5d6b88",label:_t("Sin dato")}];
   const rows=semanas.map(wk=>({label:wk.slice(5),vals:byWeek[wk]}));
   el("chart_outcomes_week").innerHTML=stacked(rows,series,{h:220,bw:32,gap:14,fmt:v=>v.toFixed(0),lab:v=>v>0?v:""})+
     `<div class="legend" style="margin-top:6px">`+series.map(s=>`<span class="it"><span class="sw" style="background:${s.color}"></span>${s.label}</span>`).join("")+`</div>`;
@@ -1078,7 +1391,7 @@ function agrupar(byday, gran){
   const langs={};
   D.sesiones.forEach(s=>Object.entries(s.languages||{}).forEach(([l,c])=>langs[l]=(langs[l]||0)+c));
   const items=Object.entries(langs).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  if(!items.length){ el("donut_langs").innerHTML=`<p class="mut" style="padding:10px">Sin datos de lenguajes.</p>`; return; }
+  if(!items.length){ el("donut_langs").innerHTML=`<p class="mut" style="padding:10px">${_t("Sin datos de lenguajes.")}</p>`; return; }
   const LCOL={"Python":"#3572A5","JavaScript":"#f1e05a","TypeScript":"#2b7489","HTML":"#e34c26",
     "CSS":"#563d7c","Shell":"#89e051","Go":"#00ADD8","Rust":"#dea584","Java":"#b07219",
     "C":"#555555","C++":"#f34b7d","Ruby":"#701516","PHP":"#4F5D95","Kotlin":"#A97BFF","Markdown":"#083fa1"};
@@ -1102,7 +1415,7 @@ function agrupar(byday, gran){
     "multi_task":"Multi-tarea","iterative_refinement":"Refinamiento iterativo","single_task":"Tarea única",
     "desconocido":"Desconocido"};
   const items=Object.entries(tipos).sort((a,b)=>b[1]-a[1]);
-  if(!items.length){ el("donut_tipo_ses").innerHTML=`<p class="mut" style="padding:10px">Sin datos de tipo de sesión.</p>`; return; }
+  if(!items.length){ el("donut_tipo_ses").innerHTML=`<p class="mut" style="padding:10px">${_t("Sin datos de tipo de sesión.")}</p>`; return; }
   const tot=items.reduce((s,[,c])=>s+c,0);
   const donItems=items.map(([k,c])=>({label:TLAB[k]||k,value:c,color:TCOL[k]||"#6ea8fe"}));
   el("donut_tipo_ses").innerHTML=donut(donItems,{big:tot+"",small:"sesiones"});
@@ -1115,7 +1428,7 @@ function agrupar(byday, gran){
   const cnt=buckets.map(()=>0); let total=0;
   D.sesiones.forEach(s=>{ if(s.duracion_min==null) return; total++;
     const i=buckets.findIndex(b=>s.duracion_min<b.max); if(i>=0) cnt[i]++; });
-  if(!total){ el("chart_dur_hist").innerHTML=`<p class="mut" style="padding:16px">Sin datos de duración disponibles.</p>`; return; }
+  if(!total){ el("chart_dur_hist").innerHTML=`<p class="mut" style="padding:16px">${_t("Sin datos de duración disponibles.")}</p>`; return; }
   const items=buckets.map((b,i)=>({label:b.label,value:cnt[i],color:"#6ea8fe",sub:cnt[i]+" sesiones"}));
   el("chart_dur_hist").innerHTML=hbars(items,v=>v+" sesiones");
 })();
@@ -1123,7 +1436,7 @@ function agrupar(byday, gran){
 (function(){ /* tasks por proyecto */
   const T=D.tasks||{};
   const projs=Object.keys(T);
-  if(!projs.length){ el("tasks_box").innerHTML=`<p class="mut">Sin tasks en <code>~/.claude/tasks/</code>.</p>`; return; }
+  if(!projs.length){ el("tasks_box").innerHTML=`<p class="mut">${_t("Sin tasks en")} <code>~/.claude/tasks/</code>.</p>`; return; }
   const series=[{key:"completed",color:"#22c55e",label:"Completadas"},{key:"in_progress",color:"#f59e0b",label:"En curso"},{key:"archived",color:"#5d6b88",label:"Archivadas"}];
   const rows=projs.map(p=>({label:p.length>20?p.slice(0,19)+"…":p,vals:{completed:T[p].completed||0,in_progress:T[p].in_progress||0,archived:T[p].archived||0}}));
   el("tasks_box").innerHTML=stacked(rows,series,{h:220,bw:36,gap:20,fmt:v=>v.toFixed(0),lab:v=>v>0?v:""})+
@@ -1135,10 +1448,10 @@ function agrupar(byday, gran){
 (function(){
   const proj=el("f_proj"), txt=el("f_text"), fcat=el("f_cat");
   const projs=[...new Set(D.sesiones.map(s=>s.proyecto))].sort();
-  proj.innerHTML=`<option value="">Todos los proyectos (${D.sesiones.length})</option>`+
+  proj.innerHTML=`<option value="">${_t("Todos los proyectos")} (${D.sesiones.length})</option>`+
     projs.map(p=>`<option value="${esc(p)}">${esc(p)}</option>`).join("");
   const cats=[...new Set(D.sesiones.map(s=>s.categoria).filter(Boolean))].sort();
-  fcat.innerHTML=`<option value="">Todos los tipos</option>`+
+  fcat.innerHTML=`<option value="">${_t("Todos los tipos")}</option>`+
     cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join("");
   let current=D.sesiones;
   function badge(out){ if(!out) return ""; const ok=/achiev|success|complet/i.test(out), bad=/fail|abandon|not_/i.test(out);
@@ -1296,7 +1609,7 @@ function agrupar(byday, gran){
 
   el("btn_save_precios").addEventListener("click", async ()=>{
     const btn=el("btn_save_precios"), status=el("precios_status");
-    btn.disabled=true; btn.textContent="Guardando…"; status.textContent="";
+    btn.disabled=true; btn.textContent=_t("Guardando…"); status.textContent="";
 
     /* construir nuevo precios.json (deep copy + edits) */
     const nuevo=JSON.parse(JSON.stringify(P));
@@ -1341,15 +1654,15 @@ function agrupar(byday, gran){
 /* ===================== FOOTER ===================== */
 (function(){
   const pm=D.precios_meta||{};
-  el("foot").innerHTML=`Tarifas usadas (USD por 1M tokens, ${esc(pm.vigente_desde||"")}): `+
+  el("foot").innerHTML=`${_t("Tarifas usadas (USD por 1M tokens,")} ${esc(pm.vigente_desde||"")}): `+
     D.by_model.filter(m=>m.modelo!=="synthetic").map(m=>esc(m.etiqueta)).join(", ")+
-    `. Caché: lectura 0,1× · escritura 5m 1,25× · escritura 1h 2,0× la tarifa de entrada. `+
-    `Web search ${esc(String((pm.herramientas_servidor||{}).web_search||"$10/1000"))}. `+
-    `Fechas/horas en zona local. Coste = contrafactual a tarifas API. `+
-    `Importes mostrados en € a ${TASA.toFixed(2)} €/$ (las tarifas API son en USD). `+
-    `<br>Fuente de tarifas: ${esc(pm.fuente||"Anthropic")}. `+
-    `Datos crudos en <code>panel_costes/datos.json</code>; estado de auto-mejora en <code>panel_costes/estado/</code>. `+
-    `<b style="color:#7ee2a8">Este panel solo LEE ~/.claude; nunca escribe ahí.</b>`;
+    `. ${_t("Caché: lectura 0,1× · escritura 5m 1,25× · escritura 1h 2,0× la tarifa de entrada.")} `+
+    `${_t("Web search")} ${esc(String((pm.herramientas_servidor||{}).web_search||"$10/1000"))}. `+
+    `${_t("Fechas/horas en zona local. Coste = contrafactual a tarifas API.")} `+
+    `${_t("Importes mostrados en € a")} ${TASA.toFixed(2)} €/$ (${_t("las tarifas API son en USD.")}). `+
+    `<br>${_t("Fuente de tarifas:")} ${esc(pm.fuente||"Anthropic")}. `+
+    `${_t("Datos crudos en")} <code>panel_costes/datos.json</code>; ${_t("estado de auto-mejora en")} <code>panel_costes/estado/</code>. `+
+    `<b style="color:#7ee2a8">${_t("Este panel solo LEE ~/.claude; nunca escribe ahí.")}</b>`;
 })();
 
 /* ===================== TOOLTIP ===================== */
@@ -1390,16 +1703,16 @@ function agrupar(byday, gran){
   b.textContent="🔄 Actualizar ahora";
   b.style.cssText="cursor:pointer;font:inherit;font-size:11px;padding:4px 11px;border-radius:999px;"+
     "border:1px solid #1f5137;color:#7ee2a8;background:#0f2419";
-  b.title="Regenera los datos en el servidor y recarga";
+  b.title=_t("Regenera los datos en el servidor y recarga");
   b.onclick=async()=>{
-    const prev=b.textContent; b.disabled=true; b.textContent="Actualizando…";
+    const prev=b.textContent; b.disabled=true; b.textContent=_t("Actualizando…");
     try{
       const r=await fetch("/regenerar",{cache:"no-store"});
       const j=await r.json();
       if(j&&j.ok){ location.reload(); return; }
-      throw new Error("respuesta inesperada");
+      throw new Error(_t("respuesta inesperada"));
     }catch(e){
-      b.textContent="Error — reintenta"; b.disabled=false;
+      b.textContent=_t("Error — reintenta"); b.disabled=false;
       setTimeout(()=>{ b.textContent=prev; },2500);
     }
   };
@@ -1412,10 +1725,10 @@ function agrupar(byday, gran){
   const mio=D.generado; let avisado=false;
   function mostrar(gen){
     const b=document.createElement("button");
-    b.textContent="🟢 Datos nuevos — recargar";
+    b.textContent=_t("🟢 Datos nuevos — recargar");
     b.style.cssText="cursor:pointer;font:inherit;font-size:11px;padding:4px 11px;border-radius:999px;"+
       "border:1px solid #7c5cff;color:#cdbcff;background:#1c1733";
-    b.title="El servidor regeneró los datos ("+esc(gen||"")+")";
+    b.title=_t("El servidor regeneró los datos")+" ("+esc(gen||"")+")";;
     b.onclick=()=>location.reload();
     el("badges").appendChild(b);
   }

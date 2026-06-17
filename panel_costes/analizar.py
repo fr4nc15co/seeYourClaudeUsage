@@ -251,7 +251,7 @@ RANGO_MODELO = {"haiku-4-5": 1, "sonnet-4-6": 2,
 # SIEMPRE en _agregar() a partir de los tokens, asi que editar precios.json sigue
 # recalculando bien aunque todo venga del cache. El cache vive en panel_costes/estado/
 # (jamas en ~/.claude) y se versiona: si cambia el formato, se ignora y se relee todo.
-CACHE_VER  = 2
+CACHE_VER  = 3   # subir si cambia el formato del registro por fichero (p.ej. nuevos campos)
 CACHE_PATH = os.path.join(STATE_DIR, "eventos_cache.json")
 
 def _cargar_cache():
@@ -364,6 +364,7 @@ def _extraer_archivo(path):
             events.append({
                 "mid": msg.get("id") or uuid,
                 "modelo": modelo, "modelo_raw": modelo_raw,
+                "ep": r.get("entrypoint"),          # cliente: claude-desktop / claude-vscode / ...
                 "ts": dt.isoformat() if dt else None,
                 "inp": usage.get("input_tokens", 0) or 0,
                 "out": usage.get("output_tokens", 0) or 0,
@@ -404,6 +405,7 @@ def _agregar(recs):
                                   "input": 0, "output": 0, "cache_read": 0, "cache_write": 0})
     by_project = defaultdict(lambda: {"coste": 0.0, "requests": 0, "sesiones": set(),
                                       "input": 0, "output": 0, "cache_read": 0, "cache_write": 0})
+    by_client = defaultdict(lambda: {"coste": 0.0, "requests": 0, "sesiones": set()})
     by_month = defaultdict(float)
     by_week = defaultdict(lambda: {"coste": 0.0, "requests": 0, "modelos": defaultdict(float), "inicio": None})
     heat = [[0.0] * 24 for _ in range(7)]
@@ -513,6 +515,11 @@ def _agregar(recs):
             if sesion_padre:
                 pr["sesiones"].add(sesion_padre)
 
+            bc = by_client[ev.get("ep") or "desconocido"]
+            bc["coste"] += total; bc["requests"] += 1
+            if sesion_padre:
+                bc["sesiones"].add(sesion_padre)
+
             skey = sesion_padre or mid
             s = por_sesion[skey]
             s["coste"] += total; s["requests"] += 1
@@ -535,6 +542,7 @@ def _agregar(recs):
     return {
         "eventos": eventos, "por_sesion": por_sesion,
         "tot": tot, "by_model": by_model, "by_day": by_day, "by_project": by_project,
+        "by_client": by_client,
         "by_month": by_month, "by_week": by_week, "heat": heat, "heat_req": heat_req,
         "limites": limites, "menciones_limite": menciones_limite,
         "skills": skills, "skills_por_sesion": skills_por_sesion,
@@ -709,6 +717,18 @@ def construir(A, facets, meta, tasks, ahora):
             "coste": round(v["coste"], 4), "requests": v["requests"],
             "sesiones": len(v["sesiones"]),
             "tokens": v["input"] + v["output"] + v["cache_read"] + v["cache_write"],
+        })
+
+    # by_cliente (entrypoint: desde dónde se usó Claude Code). Editable.
+    CLIENTES = {"claude-desktop": "Escritorio / terminal", "claude-vscode": "VS Code",
+                "claude-code": "CLI", "cli": "CLI", "sdk": "SDK", "desconocido": "Desconocido"}
+    by_cliente = []
+    for ep, v in sorted(A.get("by_client", {}).items(), key=lambda kv: -kv[1]["coste"]):
+        by_cliente.append({
+            "cliente": ep, "etiqueta": CLIENTES.get(ep, ep),
+            "coste": round(v["coste"], 4), "requests": v["requests"],
+            "sesiones": len(v["sesiones"]),
+            "share": round(100 * v["coste"] / coste_total, 1),
         })
 
     # sesiones (join con meta + facets)
@@ -1037,6 +1057,7 @@ def construir(A, facets, meta, tasks, ahora):
         "by_hour": by_hour,
         "by_week": by_week,
         "by_project": by_project,
+        "by_cliente": by_cliente,
         "sesiones": sesiones,
         "heat": heat,
         "subscripcion": {

@@ -1,4 +1,4 @@
-# motor_agentico_basico — Guía para Claude
+# seeYourClaudeUsage — Guía para Claude
 
 Panel de costes y análisis para Claude Code. Lee los transcripts JSONL de `~/.claude`,
 calcula costes a tarifas API, clasifica actividad y sirve un dashboard HTML interactivo.
@@ -8,7 +8,7 @@ calcula costes a tarifas API, clasifica actividad y sirve un dashboard HTML inte
 ## Estructura del proyecto
 
 ```
-motor_agentico_basico/
+seeYourClaudeUsage/
 ├── panel_costes/
 │   ├── analizar.py          # Motor principal de análisis (≈1 336 líneas)
 │   ├── servidor.py          # Servidor HTTP local en :8799 (193 líneas)
