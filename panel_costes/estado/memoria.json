@@ -1,0 +1,26 @@
+{
+ "ultima_actualizacion": "2026-06-17T22:34:38.457404+02:00",
+ "proyecto_top": "SOCIAREM-TopologicalOptTool",
+ "modelo_dominante": "Opus 4.8",
+ "hora_pico": "Mar 13:00",
+ "ratio_cache": 96.2,
+ "coste_acumulado_max": 1320.6337,
+ "proyectos_vistos": [
+  "-Users-fmartin",
+  "GraphifyYourProject",
+  "SOCIAREM-TopologicalOptTool",
+  "fr4nc15co",
+  "motor-agentico-basico",
+  "pdftomd",
+  "web-sistemasElectronicos",
+  "webMicroprocesadoresinteractiva"
+ ],
+ "modelos_vistos": [
+  "fable-5",
+  "haiku-4-5",
+  "opus-4-7",
+  "opus-4-8",
+  "sonnet-4-6"
+ ],
+ "ejecuciones": 36
+}

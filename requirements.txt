@@ -1,0 +1,2 @@
+# Sin dependencias externas — solo Python 3.8+ con librería estándar.
+# No es necesario ejecutar pip install.

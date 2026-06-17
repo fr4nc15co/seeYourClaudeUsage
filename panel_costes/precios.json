@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "descripcion": "Tarifas oficiales de la API de Anthropic, USD por 1 millón de tokens. Editable.",
+    "fuente": "Anthropic Claude API (referencia del skill claude-api, cacheada 2026-05-26)",
+    "vigente_desde": "2026-06-17",
+    "reglas_cache": {
+      "lectura_cache": "0.10 x tarifa_input",
+      "escritura_cache_5m": "1.25 x tarifa_input",
+      "escritura_cache_1h": "2.00 x tarifa_input"
+    },
+    "herramientas_servidor": {
+      "web_search": "USD 10.00 por 1000 busquedas",
+      "web_fetch": "gratis (el contenido se factura como tokens de input)"
+    },
+    "nota": "Los modelos Opus 4.6/4.7/4.8 comparten tarifa (5/25). Fable 5 es el tier superior (10/50). El sufijo [1m] (contexto 1M) NO tiene recargo. <synthetic> = mensajes locales sin coste de API. Suscripciones (USD equiv. a factura anual): Pro $20/mes, Teams Standard $25/mes (€18), Teams Premium 5x $125/mes (€90), Max 5x $100/mes, Max 20x $200/mes. Teams en factura mensual: Standard €21,04 ($29), Premium €105,23 ($146). Conversión orientativa ~1,39 USD/EUR."
+  },
+  "modelos": {
+    "fable-5": {
+      "input": 10,
+      "output": 50,
+      "etiqueta": "Fable 5",
+      "color": "#a855f7"
+    },
+    "opus-4-8": {
+      "input": 5,
+      "output": 25,
+      "etiqueta": "Opus 4.8",
+      "color": "#f59e0b"
+    },
+    "opus-4-7": {
+      "input": 5,
+      "output": 25,
+      "etiqueta": "Opus 4.7",
+      "color": "#d97706"
+    },
+    "opus-4-6": {
+      "input": 5,
+      "output": 25,
+      "etiqueta": "Opus 4.6",
+      "color": "#b45309"
+    },
+    "sonnet-4-6": {
+      "input": 3,
+      "output": 15,
+      "etiqueta": "Sonnet 4.6",
+      "color": "#3b82f6"
+    },
+    "haiku-4-5": {
+      "input": 1,
+      "output": 5,
+      "etiqueta": "Haiku 4.5",
+      "color": "#10b981"
+    },
+    "synthetic": {
+      "input": 0,
+      "output": 0,
+      "etiqueta": "Sintético",
+      "color": "#6b7280"
+    }
+  },
+  "web_search_por_1000": 10,
+  "presupuesto_usd_mes": 0,
+  "eur_por_usd": 0.86,
+  "plan_actual": "Teams Premium 5x",
+  "suscripciones_usd_mes": {
+    "Pro": 20,
+    "Teams Standard": 25,
+    "Teams Premium 5x": 125,
+    "Max 5x": 100,
+    "Max 20x": 200
+  }
+}
