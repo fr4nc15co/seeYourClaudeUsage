@@ -1,0 +1,33 @@
+# Generated files
+panel_costes/datos.json
+panel_costes/panel.html
+panel_costes/index.html
+panel_costes/sesiones.csv
+
+# State and cache (keep folder, ignore contents)
+panel_costes/estado/*
+!panel_costes/estado/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.Python
+venv/
+.venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
